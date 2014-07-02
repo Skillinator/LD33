@@ -22,8 +22,11 @@ WindowSystem::WindowSystem(){
 	initializeWindow();
 }
 
-WindowSystem::WindowSystem(int gwidth, int gheight, char* gtitle){
-	title = gtitle;
+WindowSystem::WindowSystem(int gwidth, int gheight, std::string gtitle){
+
+	title = new char[gtitle.length() + 1];
+	strcpy(title, gtitle.c_str());
+	
 	width = gwidth;
 	height = gheight;
 	id = SYSTEM_WINDOW;
