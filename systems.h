@@ -19,7 +19,7 @@ const int SYSTEM_GARBAGECOLLECT = 7;
 class WindowSystem : public System{
 public:
 	WindowSystem();
-	WindowSystem(int gwidth, int gheight, char* gtitle);
+	WindowSystem(int gwidth, int gheight, std::string gtitle);
 	void initializeWindow();
 	void closeWindow();
 	void update(float delta);

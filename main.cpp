@@ -13,7 +13,7 @@
 
 int windowheight = 736;
 int windowwidth = 736;
-const char* title = "SkilLib 0.1 Testing";
+std::string title = "RTS-CTF-CONCEPT";
 double libVersion = 0.1;
 
 
@@ -30,7 +30,7 @@ Engine *theEngine;
 int main(){
     std::cout<<"Loaded SkilLib v" << libVersion << "\n";
     theEngine = new Engine();
-    theEngine->addSystem(new WindowSystem());
+    theEngine->addSystem(new WindowSystem(1024, 720, title));
     theEngine->addSystem(new TimekeeperSystem());
    	theEngine->start();
 }
