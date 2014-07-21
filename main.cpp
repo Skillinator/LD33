@@ -30,7 +30,7 @@ Engine *theEngine;
 int main(){
     std::cout<<"Loaded SkilLib v" << libVersion << "\n";
     theEngine = new Engine();
-    theEngine->addSystem(new WindowSystem(1024, 720, title));
+    theEngine->addSystem(new WindowSystem(1024, 720, "RTS-CTF CONCEPT"));
     theEngine->addSystem(new TimekeeperSystem());
    	theEngine->start();
 }

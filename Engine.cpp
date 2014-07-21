@@ -56,6 +56,9 @@ void System::message(Message* msg){
 
 Engine::Engine(){
 	delta = 0.0;
+	io = new IOManager();
+	settings = new SettingsManager(io);
+	keybinds = new KeybindManager(io);
 }
 
 Entity *Engine::getEntity(int index){
