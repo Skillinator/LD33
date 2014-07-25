@@ -29,6 +29,14 @@ protected:
 	char* title;
 };
 
+class RenderSystem : public System{
+public:
+	RenderSystem();
+	void update(float delta);
+protected:
+	//This seems like it should be a pretty basic class but I still feel like I'm forgetting something
+};
+
 class TimekeeperSystem : public System{
 public:
 	TimekeeperSystem();

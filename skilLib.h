@@ -140,6 +140,9 @@ public:
 	Entity *getEntity(int index);
 	int numEntities();
 protected:
+	IOManager *io;
+	SettingsManager *settings;
+	KeybindManager *keybinds;
 	bool running;
 	float delta;
 	std::vector<Entity*> entities;
