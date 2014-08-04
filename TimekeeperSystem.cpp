@@ -28,7 +28,6 @@ void TimekeeperSystem::update(float delta){
 		fps = ticks;
 		lastSecond = currentTime;
 		ticks = 0;
-		std::cout<<fps<<" FPS\n";
 	}
 
 	delta = currentTime - lastTime;

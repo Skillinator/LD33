@@ -70,7 +70,6 @@ int Engine::numEntities(){
 }
 
 void Engine::addEntity(Entity *ent){
-	std::cout<<"ADDING ENTITY";
 	entities.push_back(ent);
 }
 
