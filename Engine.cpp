@@ -15,7 +15,7 @@
 extern Engine *theEngine;
 
 Component::Component(){
-
+id = COMPONENT_NONE;
 }
 Component::~Component(){
 

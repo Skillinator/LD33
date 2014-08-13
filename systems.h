@@ -29,14 +29,6 @@ protected:
 	char* title;
 };
 
-class RenderSystem : public System{
-public:
-	RenderSystem();
-	void update(float delta);
-protected:
-	//This seems like it should be a pretty basic class but I still feel like I'm forgetting something
-};
-
 class TimekeeperSystem : public System{
 public:
 	TimekeeperSystem();
@@ -51,6 +43,32 @@ protected:
 	double lastTime;
 	double lastSecond;
 	double currentTime;
+};
+
+class MovementSystem : public System{
+public:
+	MovementSystem();
+	void update(float delta); // The method where the float delta actually matters
+};
+
+class CollisionSystem : public System{
+public:
+	CollisionSystem();
+	void update(float delta);
+};
+
+class RenderSystem : public System{
+public:
+	RenderSystem();
+	void update(float delta);
+protected:
+	//This seems like it should be a pretty basic class but I still feel like I'm forgetting something
+};
+
+class InputSystem : public System{
+public:
+	InputSystem();
+	void update();
 };
 
 #endif

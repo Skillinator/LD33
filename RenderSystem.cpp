@@ -32,9 +32,9 @@ void RenderSystem::update(float delta){
 			float r = color->getR();
 			float g = color->getG();
 			float b = color->getB();
-
+			float a = color->getA();
 			glDisable(GL_TEXTURE_2D);
-			glColor3f(r,g,b);
+			glColor4f(r,g,b,a);
 			glBegin(GL_QUADS);
 				glVertex2i(x,y);
 				glVertex2i(x+w,y);

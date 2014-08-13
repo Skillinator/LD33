@@ -1,3 +1,2 @@
 all:
-	g++ main.cpp Engine.cpp WindowSystem.cpp RenderSystem.cpp TimekeeperSystem.cpp DeltaMessage.cpp Entity.cpp libSOIL.a -lglew32 -lglfw3 -lopengl32 -lglu32 -lgdi32 -o skilLib
-
+	g++ main.cpp Engine.cpp IOManager.cpp SettingsManager.cpp Setting.cpp WindowSystem.cpp RenderSystem.cpp MovementSystem.cpp ColorComponent.cpp PositionComponent.cpp DimensionsComponent.cpp VectorComponent.cpp VelocityComponent.cpp TimekeeperSystem.cpp DeltaMessage.cpp Entity.cpp libSOIL.a -lglew32 -lglfw3 -lopengl32 -lglu32 -lgdi32 -o rts

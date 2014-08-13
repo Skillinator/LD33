@@ -70,6 +70,7 @@ Component *Entity::getComponent(int compID){
 			return components.at(x);
 		}
 	}
+	return new Component(); // will this eventually bog down memory?
 }
 
 void Entity::update(int delta){
