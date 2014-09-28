@@ -39,7 +39,8 @@ int main(){
    	tmp->addComponent(new Color(1.0, 0.0, 0.0, 1.0));
    	tmp->addComponent(new Dimensions(64, 32));
    	tmp->addComponent(new Position(0, 128));
-	tmp->addComponent(new Velocity(100.0, 0.0));
+
+	  tmp->addComponent(new Vector(100.0, 0.0, COMPONENT_VELOCITY));
    	theEngine-> addEntity(tmp);
 
    	theEngine->start();

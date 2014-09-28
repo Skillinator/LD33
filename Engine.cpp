@@ -24,6 +24,10 @@ int Component::getID(){
 	return id;
 }
 
+void Component::setID(int getid){
+	id = getid;
+}
+
 System::System(){
 	handler = new MessageHandler();
 }

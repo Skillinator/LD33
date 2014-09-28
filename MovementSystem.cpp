@@ -21,7 +21,7 @@ void MovementSystem::update(float delta){
 		Entity* ent = entityAt(x);
 		if(ent->hasComponent(COMPONENT_POSITION) && ent->hasComponent(COMPONENT_VELOCITY)){
 			Position *pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
-			Velocity *vel = static_cast<Velocity*>(ent->getComponent(COMPONENT_VELOCITY));
+			Vector *vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
 			
 			float x = pos->getX();
 			float y = pos->getY();
@@ -29,7 +29,6 @@ void MovementSystem::update(float delta){
 			float dir = vel->getDirection();
 			
 			float xchange = (mag * delta) * cos(dir);
-			std::cout << "(" << mag << "*" << delta << ") * cos(" << dir << ") = " << xchange << "\n";
 			float ychange = (mag * delta) * sin(dir);
 			
 			pos->setX(x+xchange);
