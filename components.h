@@ -62,16 +62,19 @@ class Vector : public Component{
 public:
 	Vector();
 	Vector(float gmag, float gdir);
+	Vector(float gmag, float gdir, int gid);
 	float getMagnitude();
 	float getDirection();
+	float getXComponent();
+	float getYComponent();
+	void setMagnitude(float gmag);
+	void setDirection(float gdir);
 protected:
+	void updateComponents();
 	float magnitude;
 	float direction;
+	float xComponent;
+	float yComponent;
 };
 
-class Velocity : public Vector{
-public:
-	Velocity();
-	Velocity(float gmag, float gdir);
-};
 #endif
