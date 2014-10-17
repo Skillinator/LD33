@@ -19,6 +19,12 @@ extern GLFWwindow* window;
 void shutDownEverything();
 void messageSystems(Message *m);
 
+/*
+Class Setting
+Holds a double value and a string name.
+Might need to have capability to set non-double value
+*/
+
 class Setting{
 public:
 	Setting();
@@ -33,7 +39,11 @@ private:
 	double value;
 };
 
-
+/*
+Class IOManager
+Handles Input/Output related tasks, particularly file operations.
+KeyDown seems like it should perhaps be placed in another place, with callback based system instead of the current polling based one.
+*/
 class IOManager{
 public:
 	IOManager();
@@ -45,6 +55,12 @@ public:
 	void writeFile(std::string filename, std::vector<std::string> lines);
 };
 
+/*
+Class SettingsManager
+Stores instances of the class Settings
+Can load and save to files
+Will return double value for setting when fed name value.
+*/
 class SettingsManager{
 public:
 	SettingsManager();
@@ -61,6 +77,12 @@ protected:
 	std::string filename;
 };
 
+/*
+Class KeybindManager
+Basically a settings manager for keys.
+Designed to keep keybinds and settings in separate files.
+Also makes it easier to check for what key we check. Only need to poll for intended action (ie "walkLeft") to recieve bool
+*/
 class KeybindManager: SettingsManager{
 public:
 	KeybindManager();
@@ -70,12 +92,24 @@ public:
 	//Scan 1-350 for keybinds
 };
 
+/*
+Class Message
+Base class to enable messages between components and engines.
+Seemed more useful when I wrote it. Currently only seems to be used to send the Delta message?
+*/
+
 class Message{
 public:
 	Message();
 	int fromType;
 	int messageType;
 };
+
+/*
+Class Component
+Base component. These are critical to our system here.
+Holds a bit of data, that differs based on what type of component it is.
+*/
 
 class Component{
 public:
@@ -87,6 +121,12 @@ public:
 	int id;
 
 };
+
+/*
+Class Entity
+Similarly critical for the function of the system.
+An Entity is essentially just a wrapper for components. All that the class really does is handle messages and hold components.
+*/
 
 class Entity{
 public:
@@ -104,6 +144,19 @@ protected:
 };
 
 
+class Texture{
+public:
+	Texture();
+	int imageID;
+	std::vector<float> points;
+	std::vector<float> values;
+};
+
+/*
+Class System
+Like a component, except that it plugs into the Engine instead of an Entity, and it has functions, not data.
+*/
+
 class System{
 public:
 	System();
@@ -120,12 +173,24 @@ public:
 	MessageHandler *handler;
 };
 
+/*
+Class MessagedHandler
+It handles messages.
+Base class, plugs into System or Entity.
+*/
+
 class MessageHandler{
 public:
 	MessageHandler();
 	virtual void handle(Message *m, Entity *ent);
 	virtual void handle(Message *m, System *sys);
 };
+
+/*
+Class Engine
+The core of the library.
+Holds vectors of Entities and Systems. Game loop is here. Also has some auxillary features such as Settings and Keybinds
+*/
 
 class Engine{
 public:

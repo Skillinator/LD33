@@ -1,0 +1,13 @@
+Notes
+
+Current ToDo stack:
+
+Implement file-based loading of resources (Textures, color schemes, etc)
+Implement text rendering
+Implement keyboard input and binding
+Implement dev console
+Implement hitboxes
+Implement collisions
+
+Notes:
+May want to stop unnecessary function calls for non-update systems

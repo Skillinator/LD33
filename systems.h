@@ -7,7 +7,7 @@
 #include <string>
 #include "skilLib.h"
 
-const int SYSTEM_DEBUG = 0;	
+const int SYSTEM_DEBUG = 0;
 const int SYSTEM_WINDOW = 1;
 const int SYSTEM_TIMEKEEPER = 2;
 const int SYSTEM_MOVEMENT = 3;
@@ -15,7 +15,7 @@ const int SYSTEM_COLLISION = 4;
 const int SYSTEM_RENDER = 5;
 const int SYSTEM_INPUT = 6;
 const int SYSTEM_GARBAGECOLLECT = 7;
-
+const int SYSTEM_LOADRES = 8;
 class WindowSystem : public System{
 public:
 	WindowSystem();
@@ -61,8 +61,17 @@ class RenderSystem : public System{
 public:
 	RenderSystem();
 	void update(float delta);
+	int addRenderable();
 protected:
+	std::vector<Renderable> renderables;
+	std::vector<GLuint> textures;
 	//This seems like it should be a pretty basic class but I still feel like I'm forgetting something
+};
+
+class LoadResSystem : public System{
+public:
+	LoadResSystem();
+	void update(); // This might be able to be avoided altogether
 };
 
 class InputSystem : public System{
