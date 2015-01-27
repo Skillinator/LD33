@@ -20,6 +20,55 @@ void shutDownEverything();
 void messageSystems(Message *m);
 
 /*
+Class Animation
+*/
+
+class Animation{
+	Animation(std::string getName, int getFps, int getNumFrames, std::string getPathBase);
+	Animation(std::string getName, int getFps, int getNumFrames, std::string getPathBase, std::string getExtension);
+	GLuint* nextFrame(double delta);
+	GLuint* frameAt(int x);
+	void reset();
+private:
+	std::string name;
+	double deltaT;
+	int currentFrame;
+	int fps;
+	int numFrames;
+	std::string pathBase;
+	std::string extension;
+	std::vector<GLuint*> frames;
+};
+
+/*
+Class EntityDef
+Entity definition
+Can be cloned to Entity. Holds references to Animations, SFX, and components
+*/
+
+class EntityDef{
+public:
+	EntityDef();
+	std::vector<std::string> components;
+	std::vector<std::string> animations;
+	std::vector<std::string> sounds;
+};
+
+/*
+Class Collection
+Holds entity definitions and animations, which can later be accessed.
+*/
+
+class Collection{
+public:
+	Collection(std::string getName, std::string getPath);
+	std::string getName();
+private:
+	std::string name;
+	std::string path;
+};
+
+/*
 Class Setting
 Holds a double value and a string name.
 Might need to have capability to set non-double value
@@ -115,6 +164,8 @@ class Component{
 public:
 	Component();
 	virtual ~Component();
+	virtual Component* construct() = 0;
+	virtual Component* construct(std::string args) = 0;
 	//virtual void update(float delta) = 0;
 	int getID();
 	void setID(int getid);
@@ -191,6 +242,16 @@ Class Engine
 The core of the library.
 Holds vectors of Entities and Systems. Game loop is here. Also has some auxillary features such as Settings and Keybinds
 */
+
+class Registry{
+public:
+	Registry();
+	bool Register(Component* c, std::string name);
+	Component* getComponent(std::string name);
+private:
+	std::vector<Component*> components;
+	std::vector<std::string> names;
+};
 
 class Engine{
 public:

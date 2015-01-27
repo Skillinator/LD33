@@ -1,8 +1,10 @@
 Notes
 
 Current ToDo stack:
-
+Implement Registry based creation of Components
+Implement IOManager reading 
 Implement file-based loading of resources (Textures, color schemes, etc)
+  IOManager should have load method
 Implement text rendering
 Implement keyboard input and binding
 Implement dev console
@@ -11,3 +13,14 @@ Implement collisions
 
 Notes:
 May want to stop unnecessary function calls for non-update systems
+May want to add range class for easy load/unload of resources?
+  Perhaps a "Collection" class that holds the ranges for all resource types (Graphics, Audio, etc.)
+
+
+System: IOManager loads Collections
+
+Collections store entity definitions and sfx in an easy to load/unload format
+
+Entities store sound effects, component lists, animations
+
+Animations store metadata (fps, frame numbers, base (ex. "brickWallBuild" would be the base for the animation "brickWallBuild01" to "brickWallBuild60"))

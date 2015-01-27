@@ -1,0 +1,8 @@
+<collection name="example">
+  <entity name="brickWall">
+    <animation name="build" fps="60" frames="60" pathBase="/res/brickWall/brickWallBuild" />
+    <component name="dimensions" parameters="i:16;i:16" />
+    <component name="position" parameters="f:100;f:100" />
+    <sound name="break" path="/res/sounds/bickWallBreak.mp3" />
+  </entity>
+</collection>
