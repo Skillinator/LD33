@@ -164,8 +164,10 @@ class Component{
 public:
 	Component();
 	virtual ~Component();
+	/*
 	virtual Component* construct() = 0;
 	virtual Component* construct(std::string args) = 0;
+	*/
 	//virtual void update(float delta) = 0;
 	int getID();
 	void setID(int getid);

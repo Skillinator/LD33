@@ -21,6 +21,7 @@ class Color : public Component{
 public:
 	Color();
 	Color(float gr, float gg, float gb, float ga);
+	Color()
 	float getR();
 	float getG();
 	float getB();
