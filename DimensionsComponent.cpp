@@ -23,6 +23,11 @@ Dimensions::Dimensions(int gw, int gh){
 	height = gh;
 }
 
+Component *Dimensions::spawn(std::string, std::string){
+	std::cout<<"DIMENSIONS STILL NEEDS SPAWN WRITTEN";
+	return new Dimensions();
+}
+
 int Dimensions::getWidth(){ return width; }
 int Dimensions::getHeight(){ return height; }
 void Dimensions::setWidth(int get){ width = get; }

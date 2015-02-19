@@ -25,6 +25,16 @@ Color::Color(float gr, float gg, float gb, float ga){
 	id = COMPONENT_COLOR;	
 }
 
+Component* Color::spawn(std::string sig, std::string args){
+	std::vector<std::string> arguments = split(args, ' ');
+	arguments.erase(arguments.begin());
+	if(sig.compare("ffff") == 0){
+		std::cout<<"Created new Color with values R:" << arguments[0] << " G:" << arguments[1] << " B:" << arguments[2] << " A:" << arguments[3] << "\n";
+		return new Color(stof(arguments[0]), stof(arguments[1]), stof(arguments[2]), stof(arguments[3]));
+	}
+	return new Color();
+}
+
 float Color::getR(){ return r; }
 float Color::getG(){ return g; }
 float Color::getB(){ return b; }

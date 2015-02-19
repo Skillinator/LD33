@@ -9,7 +9,7 @@
 #include "SOIL.h"
 #include "skilLib.h"
 #include "systems.h"
-
+#include "components.h"
 
 MessageHandler::MessageHandler(){}
 
@@ -70,7 +70,7 @@ Component *Entity::getComponent(int compID){
 			return components.at(x);
 		}
 	}
-	return new Component(); // will this eventually bog down memory?
+	return new NullComponent(); // will this eventually bog down memory?
 }
 
 void Entity::update(int delta){

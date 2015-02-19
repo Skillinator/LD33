@@ -17,11 +17,17 @@ const int COMPONENT_TEXTURE = 4; //not yet iomplemented
 const int COMPONENT_VECTOR = 5;
 const int COMPONENT_VELOCITY = 6;
 
+class NullComponent : public Component{
+public:
+	NullComponent();
+	Component *spawn(std::string, std::string);
+};
+
 class Color : public Component{
 public:
 	Color();
 	Color(float gr, float gg, float gb, float ga);
-	Color()
+	Component *spawn(std::string, std::string);
 	float getR();
 	float getG();
 	float getB();
@@ -38,6 +44,7 @@ class Position : public Component{
 public:
 	Position();
 	Position(float gx, float gy);
+	Component *spawn(std::string, std::string);
 	float getX();
 	float getY();
 	void setX(float get);
@@ -50,6 +57,7 @@ class Dimensions : public Component{
 public:
 	Dimensions();
 	Dimensions(int gw, int gh);
+	Component *spawn(std::string, std::string);
 	int getWidth();
 	int getHeight();
 	void setWidth(int get);
@@ -64,6 +72,7 @@ public:
 	Vector();
 	Vector(float gmag, float gdir);
 	Vector(float gmag, float gdir, int gid);
+	Component *spawn(std::string, std::string);
 	float getMagnitude();
 	float getDirection();
 	float getXComponent();

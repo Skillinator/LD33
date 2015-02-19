@@ -23,6 +23,10 @@ Position::Position(float gx, float gy){
 	y = gy;
 }
 
+Component *Position::spawn(std::string, std::string){
+	std::cout<<"Position STILL NEEDS SPAWN WRITTEN";
+	return new Position();
+}
 float Position::getX(){ return x; }
 float Position::getY(){ return y; }
 void Position::setX(float get){ x = get; }

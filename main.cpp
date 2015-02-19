@@ -28,15 +28,28 @@ void GLFWCALL windowResize(int getwidth, int getheight){
 Engine *theEngine;
 
 int main(){
+    
     std::cout<<"Loaded SkilLib v" << libVersion << "\n";
     theEngine = new Engine();
     theEngine->addSystem(new WindowSystem(1024, 720, "RTS-CTF CONCEPT"));
     theEngine->addSystem(new TimekeeperSystem());
-	theEngine->addSystem(new MovementSystem());
+    theEngine->addSystem(new MovementSystem());
     theEngine->addSystem(new RenderSystem());
+    Registry testReg = Registry();
+
+    std::vector<std::string> colorSigs;
+
+    colorSigs.push_back("ffff");
     
-   	Entity* tmp = new Entity();
-   	tmp->addComponent(new Color(1.0, 0.0, 0.0, 1.0));
+    testReg.declare("color", colorSigs);
+   	
+    Component *tmpColor = new Color();
+
+    testReg.Register(tmpColor, "color");
+
+    Entity* tmp = new Entity();
+
+   	tmp->addComponent(testReg.getComponent("color 1.0 0.0 0.0 1.0"));
    	tmp->addComponent(new Dimensions(64, 32));
    	tmp->addComponent(new Position(0, 128));
 
@@ -44,6 +57,6 @@ int main(){
    	theEngine-> addEntity(tmp);
 
    	theEngine->start();
-
+    
 }
 

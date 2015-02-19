@@ -33,6 +33,10 @@ Vector::Vector(float gmag, float gdir, int gid){
 	updateComponents();
 }
 
+Component *Vector::spawn(std::string, std::string){
+	std::cout<<"Vector STILL NEEDS SPAWN WRITTEN";
+	return new Vector();
+}
 
 void Vector::updateComponents(){
 	xComponent = magnitude * cos(direction);

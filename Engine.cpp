@@ -28,6 +28,13 @@ void Component::setID(int getid){
 	id = getid;
 }
 
+/*
+Component *Component::spawn(std::string sig, std::string args){
+	std::cout<<"fuckup spawn";
+	return new Component();
+}
+*/
+
 System::System(){
 	handler = new MessageHandler();
 }

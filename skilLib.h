@@ -19,6 +19,8 @@ extern GLFWwindow* window;
 void shutDownEverything();
 void messageSystems(Message *m);
 
+std::vector<std::string> split(std::string, char);
+
 /*
 Class Animation
 */
@@ -164,6 +166,7 @@ class Component{
 public:
 	Component();
 	virtual ~Component();
+	virtual Component *spawn(std::string sig, std::string args) = 0;
 	/*
 	virtual Component* construct() = 0;
 	virtual Component* construct(std::string args) = 0;
@@ -239,21 +242,31 @@ public:
 	virtual void handle(Message *m, System *sys);
 };
 
-/*
-Class Engine
-The core of the library.
-Holds vectors of Entities and Systems. Game loop is here. Also has some auxillary features such as Settings and Keybinds
-*/
+class RegComponent{
+public:
+	RegComponent();
+	RegComponent(std::string gName, std::vector<std::string> gSignatures);
+	std::string name;
+	Component *seed;
+	std::vector<std::string> signatures;
+};
 
 class Registry{
 public:
 	Registry();
 	bool Register(Component* c, std::string name);
-	Component* getComponent(std::string name);
+	bool declare(std::string name, std::vector<std::string> signatures);
+	Component* getComponent(std::string args);
 private:
-	std::vector<Component*> components;
-	std::vector<std::string> names;
+	std::vector<RegComponent> components;
 };
+
+
+/*
+Class Engine
+The core of the library.
+Holds vectors of Entities and Systems. Game loop is here. Also has some auxillary features such as Settings and Keybinds
+*/
 
 class Engine{
 public:
@@ -268,8 +281,8 @@ public:
 	void shutDown();
 	Entity *getEntity(int index);
 	int numEntities();
-protected:
 	IOManager *io;
+protected:
 	SettingsManager *settings;
 	KeybindManager *keybinds;
 	bool running;
