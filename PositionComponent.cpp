@@ -23,8 +23,11 @@ Position::Position(float gx, float gy){
 	y = gy;
 }
 
-Component *Position::spawn(std::string, std::string){
-	std::cout<<"Position STILL NEEDS SPAWN WRITTEN";
+Component *Position::spawn(std::string, std::string){std::vector<std::string> arguments = split(args, ' ');
+	arguments.erase(arguments.begin());
+	if(sig.compare("ff") == 0){
+		return new Position(stof(arguments[0]), stof(arguments[1]));
+	}
 	return new Position();
 }
 float Position::getX(){ return x; }

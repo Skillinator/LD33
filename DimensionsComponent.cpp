@@ -23,8 +23,11 @@ Dimensions::Dimensions(int gw, int gh){
 	height = gh;
 }
 
-Component *Dimensions::spawn(std::string, std::string){
-	std::cout<<"DIMENSIONS STILL NEEDS SPAWN WRITTEN";
+Component *Dimensions::spawn(std::string, std::string){std::vector<std::string> arguments = split(args, ' ');
+	arguments.erase(arguments.begin());
+	if(sig.compare("ii") == 0){
+		return new Dimensions(stoi(arguments[0]), stoi(arguments[1]));
+	}
 	return new Dimensions();
 }
 

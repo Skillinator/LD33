@@ -70,6 +70,7 @@ Engine::Engine(){
 	io = new IOManager();
 	settings = new SettingsManager(io);
 	keybinds = new KeybindManager(io);
+	registry = Registry();
 }
 
 Entity *Engine::getEntity(int index){

@@ -34,7 +34,13 @@ Vector::Vector(float gmag, float gdir, int gid){
 }
 
 Component *Vector::spawn(std::string, std::string){
-	std::cout<<"Vector STILL NEEDS SPAWN WRITTEN";
+	std::vector<std::string> arguments = split(args, ' ');
+	arguments.erase(arguments.begin());
+	if(sig.compare("ff") == 0){
+		return new Vector(stof(arguments[0]), stof(arguments[1]));
+	}else if(sig.compare("ffi"){
+		return new Vector(stof(arguments[0]), stof(arguments[1]), stoi(arguments[2]));
+	}
 	return new Vector();
 }
 

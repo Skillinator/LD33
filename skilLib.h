@@ -282,6 +282,8 @@ public:
 	Entity *getEntity(int index);
 	int numEntities();
 	IOManager *io;
+	
+	Registry registry;
 protected:
 	SettingsManager *settings;
 	KeybindManager *keybinds;

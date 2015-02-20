@@ -25,7 +25,50 @@ void GLFWCALL windowResize(int getwidth, int getheight){
 }
 */
 
+
 Engine *theEngine;
+
+void buildRegistry(){
+	//At least some of this is temporary, and will become replaced after XML Loading is implemented. 
+	
+	/*
+	Load Component Color
+	*/
+    std::vector<std::string> colorSigs;
+    colorSigs.push_back("ffff");
+    theEngine->registry.declare("color", colorSigs);
+    Component *tmpColor = new Color();
+    theEngine->registry.Register(tmpColor, "color");
+	
+	/*
+	Load Component Position
+	*/
+	std::vector<std::string> posSigs;
+	posSigs.push_back("ff");
+	theEngine->registry.declare("position", posSigs);
+	Component *tmpPos = new Position();
+	theEngine->registry.Register(tmpPos, "position");
+	
+	/*
+	Load Component Dimensions
+	*/
+	std::vector<std::string> dimSigs;
+	dimSigs.push_back("ii");
+	theEngine->registry.declare("dimensions", dimSigs);
+	Component *tmpDim = new Dimensions();
+	theEngine->registry.Register(tmpDim, "dimensions");
+	
+	/*
+	Load Component Vector
+	*/
+	std::vector<std::string> vectorSigs;
+	vectorSigs.push_back("ff");
+	vectorSigs.push_back("ffi");
+	theEngine->registry.declare("vector", vectorSigs);
+	Component *tmpVec = new Vector();
+	theEngine->registry.Register(tmpVec, "vector");
+}
+
 
 int main(){
     
@@ -35,25 +78,16 @@ int main(){
     theEngine->addSystem(new TimekeeperSystem());
     theEngine->addSystem(new MovementSystem());
     theEngine->addSystem(new RenderSystem());
-    Registry testReg = Registry();
-
-    std::vector<std::string> colorSigs;
-
-    colorSigs.push_back("ffff");
-    
-    testReg.declare("color", colorSigs);
-   	
-    Component *tmpColor = new Color();
-
-    testReg.Register(tmpColor, "color");
+	
+	buildRegistry();
+	
 
     Entity* tmp = new Entity();
 
-   	tmp->addComponent(testReg.getComponent("color 1.0 0.0 0.0 1.0"));
-   	tmp->addComponent(new Dimensions(64, 32));
-   	tmp->addComponent(new Position(0, 128));
-
-	  tmp->addComponent(new Vector(100.0, 0.0, COMPONENT_VELOCITY));
+   	tmp->addComponent(engine->registry.getComponent("color 1.0 0.0 0.0 1.0"));
+   	tmp->addComponent(engine->registry.getComponent("dimensions 64 32"));
+   	tmp->addComponent(engine->registry.getComponent("position 0 128"));
+	tmp->addComponent(engine->registry.getComponent("vector 100.0 0.0 " + COMPONENT_VELOCITY));
    	theEngine-> addEntity(tmp);
 
    	theEngine->start();
