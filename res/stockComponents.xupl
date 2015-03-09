@@ -1,0 +1,18 @@
+// Stock Components
+component
+	name: "color"
+	signature: "ffff"
+
+component
+	name: "position"
+	signature: "ff"
+
+component
+	name: "dimensions"
+	signature: "ii"
+
+component
+	name: "vector"
+	signature: "ff"
+	signature: "ffi"
+	
