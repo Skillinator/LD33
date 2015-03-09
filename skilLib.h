@@ -54,6 +54,8 @@ public:
 	std::vector<std::string> components;
 	std::vector<std::string> animations;
 	std::vector<std::string> sounds;
+private:
+	Collection *collection;
 };
 
 /*
