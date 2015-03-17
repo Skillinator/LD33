@@ -42,36 +42,6 @@ private:
 	std::vector<GLuint*> frames;
 };
 
-/*
-Class EntityDef
-Entity definition
-Can be cloned to Entity. Holds references to Animations, SFX, and components
-*/
-
-class EntityDef{
-public:
-	EntityDef();
-	std::vector<std::string> components;
-	std::vector<std::string> animations;
-	std::vector<std::string> sounds;
-private:
-	Collection *collection;
-};
-
-/*
-Class Collection
-Holds entity definitions and animations, which can later be accessed.
-*/
-
-class Collection{
-public:
-	Collection(std::string getName);
-	Collection(std::string getName, std::string getPath);
-	std::string getName();
-private:
-	std::string name;
-	std::string path;
-};
 
 /*
 Class Setting
@@ -245,6 +215,23 @@ public:
 	virtual void handle(Message *m, System *sys);
 };
 
+/*
+Class EntityDef
+Entity definition
+Can be cloned to Entity. Holds references to Animations, SFX, and components
+*/
+
+class EntityDef{
+public:
+	EntityDef();
+	std::vector<std::string> components;
+	std::vector<std::string> animations;
+	std::vector<std::string> sounds;
+private:
+	//Collection *collection;
+};
+
+
 class RegComponent{
 public:
 	RegComponent();
@@ -255,10 +242,13 @@ public:
 };
 
 class RegTexture{
+public:
+	RegTexture(std::string gName);
+	RegTexture(std::string gName, std::string path);
+	GLuint* texture;
+	std::string name;
 
 };
-
-class Reg
 
 class Registry{
 public:

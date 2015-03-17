@@ -45,6 +45,7 @@ void buildRegistry(){
 	*/
 	std::vector<std::string> posSigs;
 	posSigs.push_back("ff");
+  posSigs.push_back("ii");
 	theEngine->registry.declare("position", posSigs);
 	Component *tmpPos = new Position();
 	theEngine->registry.Register(tmpPos, "position");
@@ -72,25 +73,26 @@ void buildRegistry(){
 
 int main(){
     
-    std::cout<<"Loaded SkilLib v" << libVersion << "\n";
-    theEngine = new Engine();
-    theEngine->addSystem(new WindowSystem(1024, 720, "RTS-CTF CONCEPT"));
-    theEngine->addSystem(new TimekeeperSystem());
-    theEngine->addSystem(new MovementSystem());
-    theEngine->addSystem(new RenderSystem());
+  std::cout<<"Loaded SkilLib v" << libVersion << "\n";
+  theEngine = new Engine();
+  theEngine->addSystem(new WindowSystem(1024, 720, "RTS-CTF CONCEPT"));
+  theEngine->addSystem(new TimekeeperSystem());
+  theEngine->addSystem(new MovementSystem());
+  theEngine->addSystem(new RenderSystem());
 	
 	buildRegistry();
 	
 
-    Entity* tmp = new Entity();
+  Entity* tmp = new Entity();
 
-   	tmp->addComponent(engine->registry.getComponent("color 1.0 0.0 0.0 1.0"));
-   	tmp->addComponent(engine->registry.getComponent("dimensions 64 32"));
-   	tmp->addComponent(engine->registry.getComponent("position 0 128"));
-	tmp->addComponent(engine->registry.getComponent("vector 100.0 0.0 " + COMPONENT_VELOCITY));
-   	theEngine-> addEntity(tmp);
+ 	tmp->addComponent(theEngine->registry.getComponent("color 1.0 0.0 0.0 1.0"));
+ 	tmp->addComponent(theEngine->registry.getComponent("dimensions 64 32"));
+ 	tmp->addComponent(theEngine->registry.getComponent("position 0 128"));
+  tmp->addComponent(theEngine->registry.getComponent("vector 300.0 1.0 " + std::to_string(COMPONENT_VELOCITY)));
+ 	tmp->addComponent(theEngine->registry.getComponent("vector 100.0 4.7 " + std::to_string(COMPONENT_ACCELERATION)));
+  theEngine-> addEntity(tmp);
 
-   	theEngine->start();
+  theEngine->start();
     
 }
 

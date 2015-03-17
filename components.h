@@ -16,6 +16,7 @@ const int COMPONENT_DIMENSIONS = 3;
 const int COMPONENT_TEXTURE = 4; //not yet iomplemented
 const int COMPONENT_VECTOR = 5;
 const int COMPONENT_VELOCITY = 6;
+const int COMPONENT_ACCELERATION = 7;
 
 class NullComponent : public Component{
 public:
@@ -79,8 +80,12 @@ public:
 	float getYComponent();
 	void setMagnitude(float gmag);
 	void setDirection(float gdir);
+	void setXComponent(float x);
+	void setYComponent(float y);
+	void add(Vector vec2);
 protected:
 	void updateComponents();
+	void updateDirection();
 	float magnitude;
 	float direction;
 	float xComponent;

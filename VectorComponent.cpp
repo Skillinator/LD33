@@ -33,12 +33,13 @@ Vector::Vector(float gmag, float gdir, int gid){
 	updateComponents();
 }
 
-Component *Vector::spawn(std::string, std::string){
+Component *Vector::spawn(std::string sig, std::string args){
 	std::vector<std::string> arguments = split(args, ' ');
 	arguments.erase(arguments.begin());
+
 	if(sig.compare("ff") == 0){
 		return new Vector(stof(arguments[0]), stof(arguments[1]));
-	}else if(sig.compare("ffi"){
+	}else if(sig.compare("ffi") == 0){
 		return new Vector(stof(arguments[0]), stof(arguments[1]), stoi(arguments[2]));
 	}
 	return new Vector();
@@ -48,6 +49,20 @@ void Vector::updateComponents(){
 	xComponent = magnitude * cos(direction);
 	yComponent = magnitude * sin(direction);
 }
+
+void Vector::updateDirection(){
+	direction = atan(yComponent/xComponent);
+	magnitude = sqrt(pow(xComponent,2) + pow(yComponent,2));
+}
+
+void Vector::add(Vector vec2){
+	xComponent += vec2.getMagnitude() * cos(vec2.getDirection());
+	yComponent += vec2.getMagnitude() * sin(vec2.getDirection());
+	updateDirection();
+}
+
+void Vector::setXComponent(float x){ xComponent = x; updateDirection(); }
+void Vector::setYComponent(float y){ yComponent = y; updateDirection(); }
 
 void Vector::setMagnitude(float gmag){ magnitude = gmag; updateComponents(); }
 

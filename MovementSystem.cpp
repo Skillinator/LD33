@@ -33,6 +33,11 @@ void MovementSystem::update(float delta){
 			
 			pos->setX(x+xchange);
 			pos->setY(y+ychange);
+
+			if(ent->hasComponent(COMPONENT_ACCELERATION)){
+				Vector *accel = static_cast<Vector*>(ent->getComponent(COMPONENT_ACCELERATION));
+				vel->add(Vector(accel->getMagnitude()*delta, accel->getDirection()));
+			}
 		}
 	}
 }
