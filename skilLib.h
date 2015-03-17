@@ -65,6 +65,7 @@ Holds entity definitions and animations, which can later be accessed.
 
 class Collection{
 public:
+	Collection(std::string getName);
 	Collection(std::string getName, std::string getPath);
 	std::string getName();
 private:
@@ -253,11 +254,21 @@ public:
 	std::vector<std::string> signatures;
 };
 
+class RegTexture{
+
+};
+
+class Reg
+
 class Registry{
 public:
 	Registry();
 	bool Register(Component* c, std::string name);
 	bool declare(std::string name, std::vector<std::string> signatures);
+	bool addTextureUnmapped(std::string name, GLuint* tex);
+	
+	// Needs to have an add audio eventually
+	
 	Component* getComponent(std::string args);
 private:
 	std::vector<RegComponent> components;
