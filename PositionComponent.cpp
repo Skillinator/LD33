@@ -23,9 +23,12 @@ Position::Position(float gx, float gy){
 	y = gy;
 }
 
-Component *Position::spawn(std::string, std::string){std::vector<std::string> arguments = split(args, ' ');
+Component *Position::spawn(std::string sig, std::string args){
+	std::vector<std::string> arguments = split(args, ' ');
 	arguments.erase(arguments.begin());
 	if(sig.compare("ff") == 0){
+		return new Position(stof(arguments[0]), stof(arguments[1]));
+	}else if(sig.compare("ii") == 0){
 		return new Position(stof(arguments[0]), stof(arguments[1]));
 	}
 	return new Position();

@@ -58,6 +58,7 @@ Component* Registry::getComponent(std::string args){
 	std::vector<std::string> arguments = split(args, ' ');
 	std::string name = arguments.at(0);
 
+	std::cout<<"Looking for new Component " << name << "\n";
 
 	for(int x = 1; x<arguments.size(); x++){
 		std::string tmp=arguments.at(x);
@@ -99,17 +100,16 @@ Component* Registry::getComponent(std::string args){
 	for(int x = 0; x < components.size(); x++){
 
   		if(name.compare(components.at(x).name) == 0){
-  			std::cout<<"Component " << name << " Found!\n";
   			std::vector<std::string> sigs = components.at(x).signatures;
   			for(int y = 0; y < sigs.size(); y++){
   				if(sigs.at(y).compare(signature) == 0){
   					return components.at(x).seed->spawn(signature, args);
   				}
   			}
-   		}else{
-   			std::cout<<"Mismatch for Component " << name << "\n";
+  			std::cout<<"Error: Signature " << signature << " not found for component " << name << "\n";
+   			return new NullComponent();
    		}
    	}
-   	std::cout<<"failed to match";
-
+   	std::cout<<"Error: Component " << name << " not found\n";
+   	return new NullComponent();
 }
