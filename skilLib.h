@@ -250,18 +250,31 @@ public:
 
 };
 
+class RegTextureMapped{
+public:
+	RegTextureMapped(std::string gName, std::string gFull);
+	RegTextureMapped(std::string gName, std::string gFull, int gx[], int gy[]);
+	std::string name;
+	std::string source;
+	int x[];
+	int y[];
+}
+
 class Registry{
 public:
 	Registry();
 	bool Register(Component* c, std::string name);
 	bool declare(std::string name, std::vector<std::string> signatures);
-	bool addTextureUnmapped(std::string name, GLuint* tex);
+	bool addTextureUnmapped(std::string name, std::string path);
+	bool addTextureMapped(std::string name, std::string source, int gx[], int gy[]);
 	
 	// Needs to have an add audio eventually
 	
 	Component* getComponent(std::string args);
 private:
 	std::vector<RegComponent> components;
+	std::vector<RegTexture> unmappedTextures;
+	std::vector<RegTextureMapped> mappedTextures;
 };
 
 

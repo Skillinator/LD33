@@ -38,7 +38,7 @@ bool Registry::Register(Component* c, std::string name){
    		}
    	}
 
-   	return true;
+   	return false;
 }
 
 bool Registry::declare(std::string name, std::vector<std::string> signatures){
@@ -112,4 +112,24 @@ Component* Registry::getComponent(std::string args){
    	}
    	std::cout<<"Error: Component " << name << " not found\n";
    	return new NullComponent();
+}
+
+bool Registry::addTextureUnmapped(std::string name, std::string path){
+	for(int x = 0; x < unmappedTextures.size(); x++){
+  		if(name.compare(unmappedTextures.at(x).name) == 0){
+	 		return false;
+   		}
+   	}
+	unmappedTextures.push_back(RegTexture(name, path));
+   	return true;
+}
+
+bool Registry::addTextureMapped(std::string name, std::string source, int gx[], int gy[]){
+	for(int x = 0; x < mappedTextures.size(); x++){
+  		if(name.compare(mappedTextures.at(x).name) == 0){
+	 		return false;
+   		}
+   	}
+	mappedTextures.push_back(RegTextureMapped(name, path, gx, gy));
+   	return true;
 }
