@@ -92,4 +92,12 @@ protected:
 	float yComponent;
 };
 
+class Texture : public Component{
+ public:
+  Texture();
+  Texture(RegTextureMapped);
+ protected:
+  RegTextureMapped tex;
+};
+
 #endif

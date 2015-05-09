@@ -42,7 +42,13 @@ private:
 	std::vector<GLuint*> frames;
 };
 
-
+class Test{
+ public:
+  Test();
+  Test(int emacs);
+  bool isEmacsFun;
+  bool doesSaveWork;
+};
 /*
 Class Setting
 Holds a double value and a string name.
@@ -173,9 +179,10 @@ protected:
 };
 
 
-class Texture{
+
+class TextureResource{
 public:
-	Texture();
+	TextureResource();
 	int imageID;
 	std::vector<float> points;
 	std::vector<float> values;
@@ -254,6 +261,7 @@ class RegTextureMapped{
 public:
 	RegTextureMapped(std::string gName, std::string gFull);
 	RegTextureMapped(std::string gName, std::string gFull, int gx[], int gy[]);
+	GLuint* getTex();
 	std::string name;
 	std::string source;
 	int x[];
@@ -267,6 +275,8 @@ public:
 	bool declare(std::string name, std::vector<std::string> signatures);
 	bool addTextureUnmapped(std::string name, std::string path);
 	bool addTextureMapped(std::string name, std::string source, int gx[], int gy[]);
+	RegTexture getTexture(std::string);
+	RegTextureMapped getTextureMapped(std::string);
 	
 	// Needs to have an add audio eventually
 	
