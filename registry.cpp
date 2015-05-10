@@ -53,6 +53,24 @@ bool Registry::declare(std::string name, std::vector<std::string> signatures){
 	return true;
 }
 
+RegTexture* Registry::getTexture(std::string name){
+  for(int x=0; x< unmappedTextures.size(); x++){
+    if(unmappedTextures.at(x).name == name){
+      return &unmappedTextures.at(x);
+    }
+  }
+  return &unmappedTextures.at(0);
+}
+
+RegTextureMapped* Registry::getTextureMapped(std::string name){
+  for(int x=0; x<unmappedTextures.size(); x++){
+    if(mappedTextures.at(x).name == name){
+      return &mappedTextures.at(x);
+    }
+  }
+  return &mappedTextures.at(0);
+}
+
 Component* Registry::getComponent(std::string args){
 	std::string signature;
 	std::vector<std::string> arguments = split(args, ' ');
@@ -124,12 +142,12 @@ bool Registry::addTextureUnmapped(std::string name, std::string path){
    	return true;
 }
 
-bool Registry::addTextureMapped(std::string name, std::string source, int gx[], int gy[]){
+bool Registry::addTextureMapped(std::string name, std::string source, float *gx, float *gy){
 	for(int x = 0; x < mappedTextures.size(); x++){
   		if(name.compare(mappedTextures.at(x).name) == 0){
 	 		return false;
    		}
    	}
-	mappedTextures.push_back(RegTextureMapped(name, path, gx, gy));
+	mappedTextures.push_back(RegTextureMapped(name, source, gx, gy));
    	return true;
 }

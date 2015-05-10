@@ -94,10 +94,10 @@ protected:
 
 class Texture : public Component{
  public:
+  Component* spawn(std::string, std::string);
   Texture();
-  Texture(RegTextureMapped);
- protected:
-  RegTextureMapped tex;
+  Texture(std::string);
+  RegTextureMapped * tex;
 };
 
 #endif

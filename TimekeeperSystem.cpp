@@ -31,7 +31,6 @@ void TimekeeperSystem::update(float delta){
 	}
 
 	delta = currentTime - lastTime;
-
 	engineMessage(new DeltaMessage(delta));
 }
 

@@ -61,11 +61,7 @@ class RenderSystem : public System{
 public:
 	RenderSystem();
 	void update(float delta);
-	int addRenderable();
 protected:
-	std::vector<Texture> renderables;
-	std::vector<GLuint> textures;
-	//This seems like it should be a pretty basic class but I still feel like I'm forgetting something
 };
 
 class InputSystem : public System{

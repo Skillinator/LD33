@@ -14,10 +14,13 @@ class SettingsManager;
 class Engine;
 class MessageHandler;
 class Message;
+class Registry;
 
 extern GLFWwindow* window;
 void shutDownEverything();
 void messageSystems(Message *m);
+
+Registry* getRegistry();
 
 std::vector<std::string> split(std::string, char);
 
@@ -178,16 +181,6 @@ protected:
 	std::vector<Component*> components;
 };
 
-
-
-class TextureResource{
-public:
-	TextureResource();
-	int imageID;
-	std::vector<float> points;
-	std::vector<float> values;
-};
-
 /*
 Class System
 Like a component, except that it plugs into the Engine instead of an Entity, and it has functions, not data.
@@ -234,6 +227,7 @@ public:
 	std::vector<std::string> components;
 	std::vector<std::string> animations;
 	std::vector<std::string> sounds;
+
 private:
 	//Collection *collection;
 };
@@ -252,7 +246,7 @@ class RegTexture{
 public:
 	RegTexture(std::string gName);
 	RegTexture(std::string gName, std::string path);
-	GLuint* texture;
+	GLuint texture;
 	std::string name;
 
 };
@@ -260,13 +254,14 @@ public:
 class RegTextureMapped{
 public:
 	RegTextureMapped(std::string gName, std::string gFull);
-	RegTextureMapped(std::string gName, std::string gFull, int gx[], int gy[]);
-	GLuint* getTex();
+	RegTextureMapped(std::string gName, std::string gFull, float *gx, float *gy);
+	GLuint getTex();
 	std::string name;
 	std::string source;
-	int x[];
-	int y[];
-}
+	float x[4];
+	float y[4];
+	RegTexture* tex;
+};
 
 class Registry{
 public:
@@ -274,9 +269,9 @@ public:
 	bool Register(Component* c, std::string name);
 	bool declare(std::string name, std::vector<std::string> signatures);
 	bool addTextureUnmapped(std::string name, std::string path);
-	bool addTextureMapped(std::string name, std::string source, int gx[], int gy[]);
-	RegTexture getTexture(std::string);
-	RegTextureMapped getTextureMapped(std::string);
+	bool addTextureMapped(std::string name, std::string source, float *gx, float *ogy);
+	RegTexture *getTexture(std::string);
+	RegTextureMapped *getTextureMapped(std::string);
 	
 	// Needs to have an add audio eventually
 	

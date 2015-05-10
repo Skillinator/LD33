@@ -27,17 +27,18 @@ int renderMode(Entity* ent){
     3 - Texture
    */
 
-  if(ent->hasComponent(COMPONENT_POSITION) && ent->hasComponent(COMPONENT_DIMENSIONS){
-      if(ent->hasComponent(COMPONENT_COLOR) return 2;
-      if(ent->hasComponent(COMPONENT_TEXTURE) return 3;
-      return 1;
+  if(ent->hasComponent(COMPONENT_POSITION) && ent->hasComponent(COMPONENT_DIMENSIONS)){
+    if(ent->hasComponent(COMPONENT_COLOR)) return 2;
+    if(ent->hasComponent(COMPONENT_TEXTURE)) return 3;
+    return 1;
+  }
   return 0;
 }
 
 void RenderSystem::update(float delta){
-  for(int x = 0; x < numEntities(); x++){
+  for(int iterator = 0; iterator < numEntities(); iterator++){
     
-    Entity *ent = entityAt(x);
+    Entity *ent = entityAt(iterator);
     int mode = renderMode(ent);
     Color* color;
     Dimensions* dim;
@@ -58,6 +59,32 @@ void RenderSystem::update(float delta){
       x = y = w = h = 0;
     }
 
+    // Wireframe Mode
+    if(mode == 1){
+      glDisable(GL_TEXTURE_2D);
+      glColor3f(0.0, 1.0, 0.3);
+
+      glBegin(GL_LINES);
+      glVertex2f(x,y);
+      glVertex2f(x+w, y);
+      glEnd();
+
+      glBegin(GL_LINES);
+      glVertex2f(x+w, y);
+      glVertex2f(x+w, y+h);
+      glEnd();
+
+      glBegin(GL_LINES);
+      glVertex2f(x+w, y+h);
+      glVertex2f(x, y+h);
+      glEnd();
+
+      glBegin(GL_LINES);
+      glVertex2f(x, y+h);
+      glVertex2f(x, y);
+    }
+
+    // Colored Mode
     if(mode == 2){
       color = static_cast<Color*>(ent->getComponent(COMPONENT_COLOR));
       float r = color->getR();
@@ -76,9 +103,23 @@ void RenderSystem::update(float delta){
       
       glEnd();
     }
-    
+
+    // Textured Mode
     if(mode == 3){
       tex = static_cast<Texture*>(ent->getComponent(COMPONENT_TEXTURE));
+      float *xMap = tex->tex->x;
+      float *yMap = tex->tex->y;
+      
+      glEnable(GL_TEXTURE_2D);
+      glColor3f(1.0, 1.0, 1.0);
+      glBindTexture(GL_TEXTURE_2D, tex->tex->getTex());
+      glBegin(GL_QUADS);
+      glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x, y);
+      glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+w, y);
+      glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+w, y+h);
+      glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x, y+h);
+      glEnd();
+      glDisable(GL_TEXTURE_2D);
     }
 
     /*
