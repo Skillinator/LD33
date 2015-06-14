@@ -65,7 +65,7 @@ void SettingsManager::setSetting(std::string name, double value){
 }
 
 void SettingsManager::reloadSettings(){
-	std::string file = io->getFile(filename);
+	std::string file = io->getFileAsString(filename);
 
 	bool isfirst = true;
 	std::string first = "";

@@ -83,7 +83,8 @@ public:
 	IOManager(GLFWwindow* getwindow);
 	GLFWwindow* window;
 	bool keyDown(int key);
-	std::string getFile(std::string filename);
+	std::string getFileAsString(std::string filename);
+	std::vector<std::string> getFileAsVector(std::string filename);
 	void saveFile(std::string filename, std::string contents);
 	void writeFile(std::string filename, std::vector<std::string> lines);
 };
@@ -303,8 +304,8 @@ public:
 	Entity *getEntity(int index);
 	int numEntities();
 	IOManager *io;
-	
 	Registry registry;
+	void loadXUPL(std::string path);
 protected:
 	SettingsManager *settings;
 	KeybindManager *keybinds;

@@ -14,6 +14,102 @@
 
 extern Engine *theEngine;
 
+void Engine::loadXUPL(std::string path){
+	std::vector<std::string> theFile = io->getFileAsVector(path);
+	
+	for(int x = 0; x < theFile.size(); x++){
+
+		// If space blank or comment, skip it
+		if(theFile[x].size() < 2 || (theFile[x][0] == '/' && theFile[x][1] == '/')){
+		
+			// skip
+		
+		// Component
+		}else if(theFile[x] == "component"){
+		
+			std::string name;
+			std::vector<std::string> sigs;
+
+			x++;
+			while(x < theFile.size() && theFile[x].size() > 2){
+				std::vector<std::string> params = split(theFile[x], ':');
+				params[0].erase(params[0].begin());
+				params[1].erase(params[1].begin());
+				
+				if(params[0] == "name"){
+					name=params[1];
+				}
+				if(params[0] == "signature"){
+					sigs.push_back(params[1]);
+				}
+				x++;
+
+			}
+			registry.declare(name, sigs);
+			std::cout<<"Identified Component " << name << "\n";
+		
+		// Texture
+		}else if(theFile[x] == "texture"){
+			std::string name;
+			std::string path;
+
+			x++;
+			while(x < theFile.size() && theFile[x].size() > 2){
+				std::vector<std::string> params = split(theFile[x], ':');
+				params[0].erase(params[0].begin());
+				params[1].erase(params[1].begin());
+				
+				if(params[0] == "name"){
+					name = params[1];
+				}
+				if(params[0] == "path"){
+					path = params[1];
+				}
+				x++;
+
+			}
+			registry.addTextureUnmapped(name, path);
+
+		// Mapped Texture
+		}else if(theFile[x] == "textureMapped"){
+			std::string name;
+			std::string tex;
+			float xMaps[4] = {0.0, 1.0, 1.0, 0.0};
+			float yMaps[4] = {0.0, 0.0, 1.0, 1.0};
+
+			x++;
+			while(x < theFile.size() && theFile[x].size() > 2){
+				std::vector<std::string> params = split(theFile[x], ':');
+				params[0].erase(params[0].begin());
+				params[1].erase(params[1].begin());
+				
+				if(params[0] == "name"){
+					name = params[1];
+				}
+				if(params[0] == "tex"){
+					tex = params[1];
+				}
+				if(params[0] == "xmaps"){
+					std::vector<std::string> maps = split(params[1], ' ');
+					for(int y = 0; y<4; y++){
+						xMaps[y] = stof(maps[y]);
+					}
+				}
+				if(params[0] == "ymaps"){
+					std::vector<std::string> maps = split(params[1], ' ');
+					for(int y = 0; y<4; y++){
+						yMaps[y] = stof(maps[y]);
+					}
+				}
+				x++;
+
+			}
+			registry.addTextureMapped(name, tex, xMaps, yMaps);
+
+		}
+	}	
+}
+
 Engine::Engine(){
 	delta = 0.0;
 	io = new IOManager();

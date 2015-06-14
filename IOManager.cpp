@@ -21,7 +21,7 @@ bool IOManager::keyDown(int key){
 	return false;
 }
 
-std::string IOManager::getFile(std::string filename){
+std::string IOManager::getFileAsString(std::string filename){
 	std::string line;
 	std::string total;
 	char* filechar = new char[filename.size()+1];
@@ -36,6 +36,22 @@ std::string IOManager::getFile(std::string filename){
 		file.close();
 	}
 	return total;
+}
+std::vector<std::string> IOManager::getFileAsVector(std::string filename){
+	std::string line;
+	std::vector<std::string> tmp;
+	char* filechar = new char[filename.size()+1];
+	filechar[filename.size()]=0;
+	memcpy(filechar, filename.c_str(), filename.size());
+	std::ifstream file (filechar);
+
+	if(file.is_open()){
+		while(getline(file, line)){
+			tmp.push_back(line);
+		}
+		file.close();
+	}
+	return tmp;
 }
 
 void IOManager::writeFile(std::string filename, std::vector<std::string> lines){
