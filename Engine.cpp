@@ -14,57 +14,6 @@
 
 extern Engine *theEngine;
 
-Component::Component(){
-id = COMPONENT_NONE;
-}
-Component::~Component(){
-
-}
-int Component::getID(){
-	return id;
-}
-
-void Component::setID(int getid){
-	id = getid;
-}
-
-/*
-Component *Component::spawn(std::string sig, std::string args){
-	std::cout<<"fuckup spawn";
-	return new Component();
-}
-*/
-
-System::System(){
-	handler = new MessageHandler();
-}
-
-void System::engineMessage(Message *m){
-	theEngine->recieveMessage(m);
-}
-
-Entity *System::entityAt(int index){
-	return theEngine->getEntity(index);
-}
-
-int System::numEntities(){
-	return theEngine->numEntities();
-}
-
-void System::recieveMessage(Message *m){ /* default shouldn't need to do much I think */ }
-
-void System::setIndex(int ind){
-	index = ind;
-}
-
-int System::getID(){
-	return id;
-}
-
-void System::message(Message* msg){
-	handler->handle(msg, this);
-}
-
 Engine::Engine(){
 	delta = 0.0;
 	io = new IOManager();
