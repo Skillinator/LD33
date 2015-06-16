@@ -241,6 +241,7 @@ public:
 	std::string name;
 	Component *seed;
 	std::vector<std::string> signatures;
+	void consoleDump();
 };
 
 class RegTexture{
@@ -249,6 +250,7 @@ public:
 	RegTexture(std::string gName, std::string path);
 	GLuint texture;
 	std::string name;
+	void consoleDump();
 
 };
 
@@ -262,6 +264,8 @@ public:
 	float x[4];
 	float y[4];
 	RegTexture* tex;
+	void consoleDump();
+	void rePoint();
 };
 
 class Registry{
@@ -273,9 +277,10 @@ public:
 	bool addTextureMapped(std::string name, std::string source, float *gx, float *ogy);
 	RegTexture *getTexture(std::string);
 	RegTextureMapped *getTextureMapped(std::string);
-	
 	// Needs to have an add audio eventually
 	
+	void dump();
+	void rePoint();
 	Component* getComponent(std::string args);
 private:
 	std::vector<RegComponent> components;

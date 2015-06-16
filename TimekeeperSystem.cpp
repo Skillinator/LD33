@@ -7,9 +7,12 @@
 #include <string.h>
 #include <vector>
 #include "SOIL.h"
+#include <unistd.h>
 #include "skilLib.h"
 #include "systems.h"
 #include "messages.h"
+
+float targetFPS = 60;
 
 TimekeeperSystem::TimekeeperSystem(){
 	ticks = 0;

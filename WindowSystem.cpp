@@ -9,6 +9,8 @@
 #include "SOIL.h"
 #include "skilLib.h"
 #include "systems.h"
+#include <GL/gl.h>
+#include <GL/glx.h>
 
 WindowSystem::WindowSystem(){
 	std::string str = "SkilLib test";
@@ -70,6 +72,7 @@ void WindowSystem::initializeWindow(){
     }
 
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <ctime>
 #include <sstream>
 #include <GL/glew.h>
@@ -46,7 +47,6 @@ void Engine::loadXUPL(std::string path){
 
 			}
 			registry.declare(name, sigs);
-			std::cout<<"Identified Component " << name << "\n";
 		
 		// Texture
 		}else if(theFile[x] == "texture"){
@@ -106,8 +106,47 @@ void Engine::loadXUPL(std::string path){
 			}
 			registry.addTextureMapped(name, tex, xMaps, yMaps);
 
+		}else if(theFile[x] == "tileset"){
+			std::string name;
+			std::string tex;
+			float width;
+			float height;
+
+			x++;
+			while(x < theFile.size() && theFile[x].size() > 2){
+				std::vector<std::string> params = split(theFile[x], ':');
+				params[0].erase(params[0].begin());
+				params[1].erase(params[1].begin());
+				
+				if(params[0] == "name"){
+					name = params[1];
+				}
+				if(params[0] == "tex"){
+					tex = params[1];
+				}
+				if(params[0] == "width"){
+					width = stof(params[1]);
+				}
+				if(params[0] == "height"){
+					height = stof(params[1]);
+				}
+
+				x++;
+			}
+
+			int z = 0;
+			for(float y = 0; y < height; y+= 1){
+				for(float x = 0; x < width; x+=1){
+					float xMaps[4] = {x/width, x/width + 1/width, x/width + 1/width, x/width};
+					float yMaps[4] = {1-(y/height + 1/height), 1-(y/height + 1/height), 1-y/height, 1-y/height};
+					registry.addTextureMapped(name + std::to_string(z), tex, xMaps, yMaps);
+					z++;
+				}
+			}
 		}
-	}	
+	}
+
+	registry.rePoint();	
 }
 
 Engine::Engine(){

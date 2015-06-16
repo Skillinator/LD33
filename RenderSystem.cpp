@@ -140,7 +140,7 @@ void RenderSystem::update(float delta){
       glBegin(GL_TRIANGLE_FAN);
       glVertex2f(centerx, centery);
       for(int theta = 0; theta < 360; theta += 5){
-	glVertex2f(centerx+sin(theta*3.14/180) * 5, centery + cos(theta*3.14/180) * 5);
+	       glVertex2f(centerx+sin(theta*3.14/180) * 5, centery + cos(theta*3.14/180) * 5);
       }
       glEnd();
       glLineWidth(2.0);

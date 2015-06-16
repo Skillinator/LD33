@@ -1,19 +1,23 @@
 // Stock Components
 
 component
-	name: "color"
-	signature: "ffff"
+	name: color
+	signature: ffff
 
 component
-	name: "position"
-	signature: "ff"
+	name: position
+	signature: ff
+	signature: ii
 
 component
-	name: "dimensions"
-	signature: "ii"
+	name: dimensions
+	signature: ii
 
 component
-	name: "vector"
-	signature: "ff"
-	signature: "ffi"
-	
+	name: vector
+	signature: ff
+	signature: ffi
+
+component
+	name: texture
+	signature: s

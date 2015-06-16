@@ -4,7 +4,6 @@ entity
 	name: "brickWall"
 	animation: "build"
 	sound "brickWallBreak"
-	fps: 60
 	dimensions "16 16"
 	position: "100.0, 100.0"
 	

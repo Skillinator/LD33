@@ -19,7 +19,7 @@ RegTexture::RegTexture(std::string gName){
 }
 
 RegTexture::RegTexture(std::string gName, std::string path){
-  name = gName;
+  name = gName.c_str();
   const char* s = path.c_str();
 
   texture = SOIL_load_OGL_texture
@@ -45,4 +45,8 @@ RegTexture::RegTexture(std::string gName, std::string path){
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   
+}
+void RegTexture::consoleDump(){
+  std::cout<<"Unmapped Texture. Name: " << name << " Address: " <<this<< " Tex Address: " << texture << "\n";
+  std::cout<<"===================================================\n";
 }

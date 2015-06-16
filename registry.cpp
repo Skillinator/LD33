@@ -63,12 +63,13 @@ RegTexture* Registry::getTexture(std::string name){
 }
 
 RegTextureMapped* Registry::getTextureMapped(std::string name){
-  for(int x=0; x<unmappedTextures.size(); x++){
+  for(int x=0; x<mappedTextures.size(); x++){
     if(mappedTextures.at(x).name == name){
       return &mappedTextures.at(x);
     }
   }
-  return &mappedTextures.at(0);
+  std::cout<<"Error: Mapped Texture '"<<name<<"' not found. Using default.\n";
+  return &mappedTextures.at(1);
 }
 
 Component* Registry::getComponent(std::string args){
@@ -150,4 +151,25 @@ bool Registry::addTextureMapped(std::string name, std::string source, float *gx,
    	}
 	mappedTextures.push_back(RegTextureMapped(name, source, gx, gy));
    	return true;
+}
+
+void Registry::dump(){
+  std::cout<<"\n\n\n\n===================================================\n\nBEGINNING REGISTRY DUMP\n\n";
+
+  std::cout<<"===================================================\n";
+	for(int x = 0; x < components.size(); x++){
+		components[x].consoleDump();
+	}
+	for(int x = 0; x < unmappedTextures.size(); x++){
+		unmappedTextures[x].consoleDump();
+	}
+	for(int y = 0; y < mappedTextures.size(); y++){
+		mappedTextures[y].consoleDump();
+	}
+}
+
+void Registry::rePoint(){
+	for(int x = 0; x < mappedTextures.size(); x++){
+		mappedTextures[x].rePoint();
+	}
 }
