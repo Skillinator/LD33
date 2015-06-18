@@ -12,6 +12,16 @@
 #include "components.h"
 #include "messages.h"
 
+bool is_number(std::string s){
+	for(int x = 0; x < s.size(); x++){
+		if(s[x] >= 46 && s[x] <= 57 && s[x] != 47){
+			// could still be a number
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
 
 std::vector<std::string> split(std::string input, char delim){
 	std::stringstream stream(input);
@@ -81,6 +91,7 @@ Component* Registry::getComponent(std::string args){
 
 	for(int x = 1; x<arguments.size(); x++){
 		std::string tmp=arguments.at(x);
+		std::cout<<x<<" " <<tmp <<"\n";
 
 		if(tmp[0] == '\'' || tmp[0] == '"'){
 			signature.push_back('s');
@@ -89,32 +100,22 @@ Component* Registry::getComponent(std::string args){
 		}else if(tmp == "false"){
 			signature.push_back('b');
 		}else if(tmp.find('.') == std::string::npos){
-			try {
-				int tmpint = std::stoi(tmp);
-				if(std::to_string(tmpint) == tmp){
-					signature.push_back('i');
-				}else{
-					signature.push_back('s');
-				}
-			}
-			catch (...) {
+			if(is_number(tmp)){
+				signature.push_back('i');
+			}else{
 				signature.push_back('s');
 			}
 		}else{
-			try {
-				float tmpfloat = std::stof(tmp);
-				if(std::to_string(tmpfloat).substr(0,tmp.size()) == tmp){
-					signature.push_back('f');
-				}else{
-					signature.push_back('s');
-				}
-			}
-			catch (...) {
+			if(is_number(tmp)){
+				signature.push_back('f');
+			}else{
 				signature.push_back('s');
 			}
 
 		}
 	}
+
+	std::cout<<"Finished signature"<<signature<<"\n";
 	
 	for(int x = 0; x < components.size(); x++){
 
@@ -122,6 +123,7 @@ Component* Registry::getComponent(std::string args){
   			std::vector<std::string> sigs = components.at(x).signatures;
   			for(int y = 0; y < sigs.size(); y++){
   				if(sigs.at(y).compare(signature) == 0){
+  					std::cout<<"Returning component\n";
   					return components.at(x).seed->spawn(signature, args);
   				}
   			}

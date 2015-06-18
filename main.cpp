@@ -18,13 +18,6 @@ double libVersion = 0.1;
 
 
 GLFWwindow* window;
-/*
-void GLFWCALL windowResize(int getwidth, int getheight){
-    windowheight=getheight;
-    windowwidth=getwidth;
-}
-*/
-
 
 Engine *theEngine;
 
@@ -50,31 +43,28 @@ void buildRegistry(){
   theEngine->registry.Register(new Dimensions(), "dimensions");  
   theEngine->registry.Register(new Vector(), "vector");
   theEngine->registry.Register(new Texture(), "texture");
-
+  theEngine->registry.Register(new TextMessage(), "textmessage");
   theEngine->registry.dump();
  
 }
 
 int main(){  
   std::cout<<"Loaded SkilLib v" << libVersion << "\n";
+  std::cout<<"Added engine";
   theEngine = new Engine();
   theEngine->addSystem(new WindowSystem(windowwidth, windowheight, "RTS-CTF CONCEPT"));
   theEngine->addSystem(new TimekeeperSystem());
   theEngine->addSystem(new MovementSystem());
   theEngine->addSystem(new RenderSystem());
-    
-  buildRegistry();
-	
-
-  Entity* tmp = new Entity();
   
-  tmp->addComponent(theEngine->registry.getComponent("texture monospaceWhite3"));
-  tmp->addComponent(theEngine->registry.getComponent("dimensions 32 32"));
-  tmp->addComponent(theEngine->registry.getComponent("position 0 128"));
-  //tmp->addComponent(theEngine->registry.getComponent("vector 300.0 1.0 " + std::to_string(COMPONENT_VELOCITY)));
-  //tmp->addComponent(theEngine->registry.getComponent("vector 100.0 4.7 " + std::to_string(COMPONENT_ACCELERATION)));
-  theEngine-> addEntity(tmp);
+  std::cout<<"Systems added";
 
+  buildRegistry();
+
+  std::cout<<"Registry built";
+  
+  theEngine->loadXUPL("res/startingEntities.xupl");
+	
   theEngine->start();
     
 }

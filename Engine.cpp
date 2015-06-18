@@ -143,6 +143,23 @@ void Engine::loadXUPL(std::string path){
 					z++;
 				}
 			}
+		}else if(theFile[x] == "entity"){
+			std::vector<std::string> components;
+			Entity *tmp = new Entity();
+
+			x++;
+			while(x < theFile.size() && theFile[x].size() > 2){
+				std::vector<std::string> params = split(theFile[x], ':');
+				params[0].erase(params[0].begin());
+				params[1].erase(params[1].begin());
+				
+				if(params[0] == "component"){
+					tmp->addComponent(registry.getComponent(params[1]));
+				}
+				x++;
+			}
+
+			theEngine->addEntity(tmp);
 		}
 	}
 

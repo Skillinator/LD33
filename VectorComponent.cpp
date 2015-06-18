@@ -41,6 +41,15 @@ Component *Vector::spawn(std::string sig, std::string args){
 		return new Vector(stof(arguments[0]), stof(arguments[1]));
 	}else if(sig.compare("ffi") == 0){
 		return new Vector(stof(arguments[0]), stof(arguments[1]), stoi(arguments[2]));
+	}else if(sig.compare("ffs") == 0){
+		int type = 0;
+		if(arguments[2].compare("velocity") == 0){
+			type = COMPONENT_VELOCITY;
+		}
+		if(arguments[2].compare("acceleration") == 0){
+			type = COMPONENT_ACCELERATION;
+		}
+		return new Vector(stof(arguments[0]), stof(arguments[1]), type);
 	}
 	return new Vector();
 }

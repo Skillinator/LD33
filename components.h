@@ -17,6 +17,7 @@ const int COMPONENT_TEXTURE = 4; //not yet iomplemented
 const int COMPONENT_VECTOR = 5;
 const int COMPONENT_VELOCITY = 6;
 const int COMPONENT_ACCELERATION = 7;
+const int COMPONENT_TEXTMESSAGE = 8;
 
 class NullComponent : public Component{
 public:
@@ -98,6 +99,30 @@ class Texture : public Component{
   Texture();
   Texture(std::string);
   RegTextureMapped * tex;
+};
+
+class TextMessage : public Component{
+public:
+	Component* spawn(std::string, std::string);
+	TextMessage();
+	TextMessage(std::string msg, std::string fnt, int size);
+	TextMessage(std::string msg, std::string fnt, int size, int pad);
+
+	int getSize();
+	int getPadding();
+	std::string getMessage();
+	std::string getFont();
+
+	void setSize(int size);
+	void setPadding(int pad);
+	void setMessage(std::string msg);
+	void setFont(std::string fnt);
+
+protected:
+	int fontSize;
+	int padding;
+	std::string message;
+	std::string font;
 };
 
 #endif

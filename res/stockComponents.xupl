@@ -17,7 +17,13 @@ component
 	name: vector
 	signature: ff
 	signature: ffi
+	signature: ffs
 
 component
 	name: texture
 	signature: s
+
+component
+	name: textmessage
+	signature: ssi
+	signature: ssii
