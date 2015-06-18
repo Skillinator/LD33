@@ -13,6 +13,8 @@
 #include "messages.h"
 #include <math.h>
 
+extern Engine* theEngine;
+
 RenderSystem::RenderSystem(){
 	id = SYSTEM_RENDER;
 }
@@ -32,6 +34,8 @@ int renderMode(Entity* ent){
     if(ent->hasComponent(COMPONENT_TEXTURE)) return 3;
     return 1;
   }
+  if(ent->hasComponent(COMPONENT_TEXTMESSAGE)) return 4;
+  
   return 0;
 }
 
@@ -48,12 +52,18 @@ void RenderSystem::update(float delta){
     int x, y, w, h;
     
     if(mode > 0){
-      dim = static_cast<Dimensions*>(ent->getComponent(COMPONENT_DIMENSIONS));
+      if(mode != 4){
+        dim = static_cast<Dimensions*>(ent->getComponent(COMPONENT_DIMENSIONS));
+          
+        w = dim->getWidth();
+        h = dim->getHeight();
+      }else{
+        w = h = 0;
+      }
+
       pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
       x = pos->getX();
       y = pos->getY();
-      w = dim->getWidth();
-      h = dim->getHeight();
       
     }else{
       x = y = w = h = 0;
@@ -82,6 +92,7 @@ void RenderSystem::update(float delta){
       glBegin(GL_LINES);
       glVertex2f(x, y+h);
       glVertex2f(x, y);
+      glEnd();
     }
 
     // Colored Mode
@@ -119,6 +130,34 @@ void RenderSystem::update(float delta){
       glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+w, y+h);
       glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x, y+h);
       glEnd();
+      glDisable(GL_TEXTURE_2D);
+    }
+
+    if(ent->hasComponent(COMPONENT_TEXTMESSAGE)){
+
+      TextMessage *txt = static_cast<TextMessage*>(ent->getComponent(COMPONENT_TEXTMESSAGE));
+      std::string fnt = txt->getFont();
+      std::string text = txt->getMessage();
+      int padding = txt->getPadding();
+      int size = txt->getSize();
+
+      glEnable(GL_TEXTURE_2D);
+      for(int i = 0; i < text.size(); i++){
+        int ascii = text[i] - 32;
+        RegTextureMapped* tmpTex = theEngine->registry.getTextureMapped(fnt + std::to_string(ascii));
+        float *xMap = tmpTex->x;
+        float *yMap = tmpTex->y;
+        
+        glColor3f(1.0, 1.0, 1.0);
+        glBindTexture(GL_TEXTURE_2D, tmpTex->getTex());
+        glBegin(GL_QUADS);
+        glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x+padding+size*i, y);
+        glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+size+padding+size*i, y);
+        glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+size+padding+size*i, y+size);
+        glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x+padding+size*i, y+size);
+        glEnd();
+      }
+
       glDisable(GL_TEXTURE_2D);
     }
 

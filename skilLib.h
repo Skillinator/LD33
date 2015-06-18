@@ -23,6 +23,7 @@ void messageSystems(Message *m);
 Registry* getRegistry();
 
 std::vector<std::string> split(std::string, char);
+std::vector<std::string> splitForStrings(std::string, char);
 
 /*
 Class Animation

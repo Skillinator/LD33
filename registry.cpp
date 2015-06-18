@@ -34,6 +34,27 @@ std::vector<std::string> split(std::string input, char delim){
 	return tmp;
 }
 
+std::vector<std::string> splitForStrings(std::string input, char delim){
+	std::vector<std::string> arguments = split(input, delim);
+	int openQuote;
+	int quoteChar;
+	for(int x = 1; x < arguments.size(); x++){
+		if(arguments[x][0] == '"' || arguments[x][0] == 39){
+			openQuote = x;
+			quoteChar = arguments[x][0];
+			x++;
+			while(arguments[x][arguments[x].size()-1] != quoteChar){
+				arguments[openQuote] = arguments[openQuote] + arguments[x];
+				arguments.erase(arguments.begin()+x);
+			}
+			arguments[openQuote] = arguments[openQuote] + " " + arguments[x];
+			arguments[openQuote] = arguments[openQuote].substr(1, arguments[openQuote].size()-2);
+			arguments.erase(arguments.begin()+x);
+		}
+	}
+	return arguments;
+
+}
 
 
 Registry::Registry(){
@@ -84,14 +105,12 @@ RegTextureMapped* Registry::getTextureMapped(std::string name){
 
 Component* Registry::getComponent(std::string args){
 	std::string signature;
-	std::vector<std::string> arguments = split(args, ' ');
-	std::string name = arguments.at(0);
+	std::vector<std::string> arguments = splitForStrings(args, ' ');
 
-	std::cout<<"Looking for new Component " << name << "\n";
+	std::string name = arguments.at(0);
 
 	for(int x = 1; x<arguments.size(); x++){
 		std::string tmp=arguments.at(x);
-		std::cout<<x<<" " <<tmp <<"\n";
 
 		if(tmp[0] == '\'' || tmp[0] == '"'){
 			signature.push_back('s');
@@ -114,8 +133,6 @@ Component* Registry::getComponent(std::string args){
 
 		}
 	}
-
-	std::cout<<"Finished signature"<<signature<<"\n";
 	
 	for(int x = 0; x < components.size(); x++){
 
@@ -123,7 +140,6 @@ Component* Registry::getComponent(std::string args){
   			std::vector<std::string> sigs = components.at(x).signatures;
   			for(int y = 0; y < sigs.size(); y++){
   				if(sigs.at(y).compare(signature) == 0){
-  					std::cout<<"Returning component\n";
   					return components.at(x).seed->spawn(signature, args);
   				}
   			}

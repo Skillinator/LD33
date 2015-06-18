@@ -1,6 +1,11 @@
 // Current entities
 
 entity
+//	component: dimensions 32 32
+	component: textmessage 'Hello, World!' monospaceWhite 32
+	component: position 200 100
+	
+entity
 	component: texture align
 	component: dimensions 32 32
 	component: position 0 128
