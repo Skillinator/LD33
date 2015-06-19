@@ -39,17 +39,21 @@ std::vector<std::string> splitForStrings(std::string input, char delim){
 	int openQuote;
 	int quoteChar;
 	for(int x = 1; x < arguments.size(); x++){
-		if(arguments[x][0] == '"' || arguments[x][0] == 39){
+		if((arguments[x][0] == '"' || arguments[x][0] == 39)){
 			openQuote = x;
 			quoteChar = arguments[x][0];
-			x++;
-			while(arguments[x][arguments[x].size()-1] != quoteChar){
-				arguments[openQuote] = arguments[openQuote] + arguments[x];
+			if(!(arguments[x][arguments[x].size()-1] == '"' || arguments[x][arguments[x].size()-1] == 39)){
+
+				x++;
+				while(arguments[x][arguments[x].size()-1] != quoteChar){
+					arguments[openQuote] = arguments[openQuote] + arguments[x];
+					arguments.erase(arguments.begin()+x);
+				}
+				arguments[openQuote] = arguments[openQuote] + " " + arguments[x];
 				arguments.erase(arguments.begin()+x);
 			}
-			arguments[openQuote] = arguments[openQuote] + " " + arguments[x];
+			std::cout<<"check1\n";
 			arguments[openQuote] = arguments[openQuote].substr(1, arguments[openQuote].size()-2);
-			arguments.erase(arguments.begin()+x);
 		}
 	}
 	return arguments;
