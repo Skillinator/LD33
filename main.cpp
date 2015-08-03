@@ -44,7 +44,6 @@ void buildRegistry(){
   theEngine->registry.Register(new Vector(), "vector");
   theEngine->registry.Register(new Texture(), "texture");
   theEngine->registry.Register(new TextMessage(), "textmessage");
-  theEngine->registry.dump();
  
 }
 

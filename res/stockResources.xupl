@@ -1,0 +1,47 @@
+// Stock Resources
+
+texture
+	name: default
+	path: res/defaultTexture.png
+
+textureMapped
+	name: default
+	tex: default
+	xmaps: 0.0, 1.0, 1.0, 0.0
+	ymaps: 0.0, 0.0, 1.0, 1.0
+
+texture
+	name: alignmentTest
+	path: res/alignmentTest.png
+
+textureMapped
+	name: align
+	tex: alignmentTest
+
+texture
+	name: monospaceFont
+	path: res/monospace.png
+
+texture
+	name: monospaceFontWhite
+	path: res/monospaceWhite.png
+
+
+texture
+	name: fixedFontWhite
+	path: res/fixedWhite.png
+
+
+// For something like a font or animation set, we can load them automatically.
+
+//tileset
+//	name: monospace
+//	tex: monospaceFont
+//	width: 10
+//	height: 10
+
+tileset
+	name: fixedWhite
+	tex: fixedFontWhite
+	width: 95
+	height: 1

@@ -46,13 +46,12 @@ std::vector<std::string> splitForStrings(std::string input, char delim){
 
 				x++;
 				while(arguments[x][arguments[x].size()-1] != quoteChar){
-					arguments[openQuote] = arguments[openQuote] + arguments[x];
+					arguments[openQuote] = arguments[openQuote] + " " + arguments[x];
 					arguments.erase(arguments.begin()+x);
 				}
 				arguments[openQuote] = arguments[openQuote] + " " + arguments[x];
 				arguments.erase(arguments.begin()+x);
 			}
-			std::cout<<"check1\n";
 			arguments[openQuote] = arguments[openQuote].substr(1, arguments[openQuote].size()-2);
 		}
 	}
@@ -64,7 +63,6 @@ std::vector<std::string> splitForStrings(std::string input, char delim){
 Registry::Registry(){
 
 }
-
 bool Registry::Register(Component* c, std::string name){
 	for(int x = 0; x < components.size(); x++){
   		if(name.compare(components.at(x).name) == 0){

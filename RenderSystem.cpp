@@ -151,10 +151,10 @@ void RenderSystem::update(float delta){
         glColor3f(1.0, 1.0, 1.0);
         glBindTexture(GL_TEXTURE_2D, tmpTex->getTex());
         glBegin(GL_QUADS);
-        glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x+padding+size*i, y);
-        glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+size+padding+size*i, y);
-        glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+size+padding+size*i, y+size);
-        glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x+padding+size*i, y+size);
+        glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x+padding+size*i*.5, y);
+        glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+size*.5+padding+size*i*.5, y);
+        glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+size*.5+padding+size*i*.5, y+size);
+        glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x+padding+size*i*.5, y+size);
         glEnd();
       }
 

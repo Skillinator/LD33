@@ -1,0 +1,19 @@
+#include <stdio>
+#include <string>
+#include "skilLib.h"
+
+RegTextureMapped::RegTextureMapped(std::string gName, std::string gFull){
+  tex = getRegistry()->getTexture(gFull);
+  name = gName;
+  source = gFull;
+  x = [0.0, 1.0, 1.0, 0.0];
+  y = [0.0, 0.0, 1.0, 1.0];
+}
+
+RegTextureMapped::RegTextureMapped(std::string gName, std::string gFull, float gx[], float gy[]){
+  tex = getRegistry->getTexture(gFull);
+  name = gName;
+  source = gFull;
+  x = gx;
+  y = gy;
+}

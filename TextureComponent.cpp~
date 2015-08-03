@@ -1,0 +1,9 @@
+#include "skilLib.h"
+
+Texture::Texture(){
+  tex = getRegistry()->getMappedTexture("default");
+}
+
+Texture::Texture(std::string name){
+  tex = getRegistry()->getMappedTexture(name);
+}

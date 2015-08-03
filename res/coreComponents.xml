@@ -1,0 +1,20 @@
+<component name="color">
+	<signature>ffff</signature>
+	<description>A basic color with 4 floats in RGBA format.</description>
+</component>
+
+<component name="position">
+	<signature>ff</signature>
+	<description>A basic (x,y) coordinate position.</description>
+</component>
+
+<component name="dimensions">
+	<signature>ii</signature>
+	<description>Bounding box with two integer values for w and h.</description>
+</component>
+
+<component name="vector">
+	<signature>ff</signature>
+	<signature>ffi</signature>
+	<description>Magnitude and direction in radians. FFI construction includes id, to be made into velocity or other types of vector.</description>
+</component>
