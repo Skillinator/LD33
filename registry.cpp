@@ -116,6 +116,8 @@ Component* Registry::getComponent(std::string args){
 
 		if(tmp[0] == '\'' || tmp[0] == '"'){
 			signature.push_back('s');
+		}else if(tmp == "void"){
+			signature.push_back('v');
 		}else if(tmp == "true"){
 			signature.push_back('b');
 		}else if(tmp == "false"){

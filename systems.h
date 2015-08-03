@@ -15,7 +15,7 @@ const int SYSTEM_COLLISION = 4;
 const int SYSTEM_RENDER = 5;
 const int SYSTEM_INPUT = 6;
 const int SYSTEM_GARBAGECOLLECT = 7;
-
+const int SYSTEM_CLICKDRAG = 8;
 class WindowSystem : public System{
 public:
 	WindowSystem();
@@ -68,6 +68,12 @@ class InputSystem : public System{
 public:
 	InputSystem();
 	void update();
+};
+
+class ClickDragSystem : public System{
+public:
+	ClickDragSystem();
+	void update(float delta);
 };
 
 #endif

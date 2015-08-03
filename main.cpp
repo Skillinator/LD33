@@ -44,6 +44,7 @@ void buildRegistry(){
   theEngine->registry.Register(new Vector(), "vector");
   theEngine->registry.Register(new Texture(), "texture");
   theEngine->registry.Register(new TextMessage(), "textmessage");
+  theEngine->registry.Register(new ClickDrag(), "clickdrag");
  
 }
 
@@ -55,7 +56,7 @@ int main(){
   theEngine->addSystem(new TimekeeperSystem());
   theEngine->addSystem(new MovementSystem());
   theEngine->addSystem(new RenderSystem());
-  
+  theEngine->addSystem(new ClickDragSystem());
   std::cout<<"Systems added";
 
   buildRegistry();

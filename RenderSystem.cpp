@@ -79,8 +79,8 @@ void RenderSystem::update(float delta){
     }
 
     // x and y corners
-    float xC[4] = {x, x+w, x+w, x};
-    float yC[4] = {y, y, y+h, y+h};
+    float xC[4] = {x-w/2, x+w/2, x+w/2, x-w/2};
+    float yC[4] = {y-h/2, y-h/2, y+h/2, y+h/2};
 
     if(r != 0){
       float l = sqrt(pow(w/2,2) + pow(h/2, 2));
@@ -102,7 +102,7 @@ void RenderSystem::update(float delta){
       glColor3f(0.0, 1.0, 0.3);
 
       for(int i = 0; i < 4; i++){
-
+        glLineWidth(1);
         glBegin(GL_LINES);
         glVertex2f(xC[i],yC[i]);
         if(i<3) glVertex2f(xC[i+1], yC[i+1]);

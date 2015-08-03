@@ -27,3 +27,12 @@ entity
 	component: dimensions 64 64
 	component: position 300.0 300.0 0.79
 	component: vector 0.5 1.0 angularVelocity
+
+entity
+	component: dimensions 64 64
+	component: position 32.0 32.0
+	component: clickdrag void
+
+entity
+	component: dimensions 64 64
+	component: position 32.0 32.0 1.0

@@ -30,3 +30,9 @@ component
 	name: textmessage
 	signature: ssi
 	signature: ssii
+
+
+component
+	name: clickdrag
+	signature: v
+	

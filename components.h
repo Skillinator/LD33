@@ -19,6 +19,7 @@ const int COMPONENT_VELOCITY = 6;
 const int COMPONENT_ACCELERATION = 7;
 const int COMPONENT_TEXTMESSAGE = 8;
 const int COMPONENT_ANGULARVELOCITY = 9;
+const int COMPONENT_CLICKDRAG = 10;
 
 class NullComponent : public Component{
 public:
@@ -127,6 +128,24 @@ protected:
 	int padding;
 	std::string message;
 	std::string font;
+};
+
+class ClickDrag : public Component{
+public:
+	Component* spawn(std::string, std::string);
+		
+	ClickDrag();
+
+	float getXOffset();
+	float getYOffset();
+	bool getActive();
+
+	void initiate(float x, float y);
+	void release();
+private:
+	float xOffset;
+	float yOffset;
+	bool active;
 };
 
 #endif
