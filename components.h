@@ -18,6 +18,7 @@ const int COMPONENT_VECTOR = 5;
 const int COMPONENT_VELOCITY = 6;
 const int COMPONENT_ACCELERATION = 7;
 const int COMPONENT_TEXTMESSAGE = 8;
+const int COMPONENT_ANGULARVELOCITY = 9;
 
 class NullComponent : public Component{
 public:
@@ -46,13 +47,16 @@ class Position : public Component{
 public:
 	Position();
 	Position(float gx, float gy);
+	Position(float gx, float gy, float gr);
 	Component *spawn(std::string, std::string);
 	float getX();
 	float getY();
+	float getR();
 	void setX(float get);
 	void setY(float get);
+	void setR(float get);
 protected:
-	float x, y;
+	float x, y, r;
 };
 
 class Dimensions : public Component{

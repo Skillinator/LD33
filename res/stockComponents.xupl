@@ -8,6 +8,8 @@ component
 	name: position
 	signature: ff
 	signature: ii
+	signature: fff
+	signature: iii
 
 component
 	name: dimensions

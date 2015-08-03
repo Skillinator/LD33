@@ -159,7 +159,7 @@ void Engine::loadXUPL(std::string path){
 				x++;
 			}
 
-			theEngine->addEntity(tmp);
+			theEngine->addEntity(tmp);  
 		}
 	}
 

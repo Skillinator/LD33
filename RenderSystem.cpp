@@ -14,6 +14,7 @@
 #include <math.h>
 
 extern Engine* theEngine;
+const float PI = 3.141592654;
 
 RenderSystem::RenderSystem(){
 	id = SYSTEM_RENDER;
@@ -22,6 +23,7 @@ RenderSystem::RenderSystem(){
 bool SHOW_VECTORS = true;
 
 int renderMode(Entity* ent){
+
   /*
     0 - Error, do nothing
     1 - Wireframe
@@ -49,7 +51,7 @@ void RenderSystem::update(float delta){
     Position* pos;
     Texture* tex;
     
-    int x, y, w, h;
+    float x, y, r, w, h;
     
     if(mode > 0){
       if(mode != 4){
@@ -57,42 +59,66 @@ void RenderSystem::update(float delta){
           
         w = dim->getWidth();
         h = dim->getHeight();
+
       }else{
+
         w = h = 0;
+      
       }
 
       pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
       x = pos->getX();
       y = pos->getY();
-      
+      r = pos->getR();
+
     }else{
-      x = y = w = h = 0;
+
+      // Default to zero
+      x = y = r = w = h = 0;
+
     }
+
+    // x and y corners
+    float xC[4] = {x, x+w, x+w, x};
+    float yC[4] = {y, y, y+h, y+h};
+
+    if(r != 0){
+      float l = sqrt(pow(w/2,2) + pow(h/2, 2));
+      float thetas[4] = {7.0*PI/4.0, PI/4.0, 3.0*PI/4.0, 5.0*PI/4.0};
+
+      std::cout<<"Length: " << l << "\n";
+
+      for(int i = 0; i<4; i++){
+        xC[i] = x + ( cos(r + thetas[i]) * l );
+        yC[i] = y + ( sin(r +thetas[i]) * l );
+
+        std::cout<<"( " << xC[i] << ", " << yC[i] << " )\n";
+
+      }
+
+    }
+
 
     // Wireframe Mode
     if(mode == 1){
       glDisable(GL_TEXTURE_2D);
       glColor3f(0.0, 1.0, 0.3);
 
+      for(int i = 0; i < 4; i++){
+
+        glBegin(GL_LINES);
+        glVertex2f(xC[i],yC[i]);
+        if(i<3) glVertex2f(xC[i+1], yC[i+1]);
+        else glVertex2f(xC[0], yC[0]);
+        glEnd(); 
+
+      }
+
       glBegin(GL_LINES);
       glVertex2f(x,y);
-      glVertex2f(x+w, y);
+      glVertex2f(x+cos(r)*w/2, y+sin(r)*w/2);
       glEnd();
 
-      glBegin(GL_LINES);
-      glVertex2f(x+w, y);
-      glVertex2f(x+w, y+h);
-      glEnd();
-
-      glBegin(GL_LINES);
-      glVertex2f(x+w, y+h);
-      glVertex2f(x, y+h);
-      glEnd();
-
-      glBegin(GL_LINES);
-      glVertex2f(x, y+h);
-      glVertex2f(x, y);
-      glEnd();
     }
 
     // Colored Mode
@@ -107,16 +133,18 @@ void RenderSystem::update(float delta){
       glColor4f(r,g,b,a);
       glBegin(GL_QUADS);
       
-      glVertex2i(x,y);
-      glVertex2i(x+w, y);
-      glVertex2i(x+w, y+h);
-      glVertex2i(x, y+h);
+      for(int i = 0; i<4; i++){
+      
+        glVertex2i(xC[i],yC[i]);
+      
+      }
       
       glEnd();
     }
 
     // Textured Mode
     if(mode == 3){
+
       tex = static_cast<Texture*>(ent->getComponent(COMPONENT_TEXTURE));
       float *xMap = tex->tex->x;
       float *yMap = tex->tex->y;
@@ -125,12 +153,16 @@ void RenderSystem::update(float delta){
       glColor3f(1.0, 1.0, 1.0);
       glBindTexture(GL_TEXTURE_2D, tex->tex->getTex());
       glBegin(GL_QUADS);
-      glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x, y);
-      glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+w, y);
-      glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+w, y+h);
-      glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x, y+h);
+
+      for(int i = 0; i<4; i++){
+      
+        glTexCoord2f(xMap[i], yMap[i]); glVertex2i(xC[i], yC[i]);
+      
+      }
+
       glEnd();
       glDisable(GL_TEXTURE_2D);
+
     }
 
     if(ent->hasComponent(COMPONENT_TEXTMESSAGE)){

@@ -22,3 +22,7 @@ entity
 	component: position 100 128
 	component: vector 300.0 1.0 velocity
 	component: vector 100.0 4.7 acceleration
+
+entity
+	component: dimensions 32 32
+	component: position 100.0 100.0 0.79

@@ -14,13 +14,21 @@
 
 Position::Position(){
 	id = COMPONENT_POSITION;
-	x = y = 0.0;
+	x = y = r = 0.0;
 }
 
 Position::Position(float gx, float gy){
 	id = COMPONENT_POSITION;
 	x = gx;
 	y = gy;
+	r = 0.0;
+}
+
+Position::Position(float gx, float gy, float gr){
+	id = COMPONENT_POSITION;
+	x = gx;
+	y = gy;
+	r = gr;
 }
 
 Component *Position::spawn(std::string sig, std::string args){
@@ -30,10 +38,17 @@ Component *Position::spawn(std::string sig, std::string args){
 		return new Position(stof(arguments[0]), stof(arguments[1]));
 	}else if(sig.compare("ii") == 0){
 		return new Position(stof(arguments[0]), stof(arguments[1]));
+	}else if(sig.compare("fff")){
+		return new Position(stof(arguments[0]), stof(arguments[1]), stof(arguments[2]));
+	}else if(sig.compare("iii")){
+		return new Position(stof(arguments[0]), stof(arguments[1]), stof(arguments[2]));
 	}
 	return new Position();
 }
+
 float Position::getX(){ return x; }
 float Position::getY(){ return y; }
+float Position::getR(){ return r; }
 void Position::setX(float get){ x = get; }
 void Position::setY(float get){ y = get; }
+void Position::setR(float get){ r = get; }
