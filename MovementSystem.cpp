@@ -39,5 +39,11 @@ void MovementSystem::update(float delta){
 				vel->add(Vector(accel->getMagnitude()*delta, accel->getDirection()));
 			}
 		}
+		if(ent->hasComponent(COMPONENT_ANGULARVELOCITY) && ent->hasComponent(COMPONENT_POSITION)){
+			Position *pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
+			Vector *angular = static_cast<Vector*>(ent->getComponent(COMPONENT_ANGULARVELOCITY));
+			pos->setR(pos->getR() - angular->getMagnitude()*delta*angular->getDirection());
+		}
 	}
+
 }

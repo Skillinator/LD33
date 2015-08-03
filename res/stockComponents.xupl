@@ -17,6 +17,7 @@ component
 
 component
 	name: vector
+	signature: fs
 	signature: ff
 	signature: ffi
 	signature: ffs

@@ -86,13 +86,10 @@ void RenderSystem::update(float delta){
       float l = sqrt(pow(w/2,2) + pow(h/2, 2));
       float thetas[4] = {7.0*PI/4.0, PI/4.0, 3.0*PI/4.0, 5.0*PI/4.0};
 
-      std::cout<<"Length: " << l << "\n";
 
       for(int i = 0; i<4; i++){
         xC[i] = x + ( cos(r + thetas[i]) * l );
         yC[i] = y + ( sin(r +thetas[i]) * l );
-
-        std::cout<<"( " << xC[i] << ", " << yC[i] << " )\n";
 
       }
 

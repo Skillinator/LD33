@@ -49,6 +49,9 @@ Component *Vector::spawn(std::string sig, std::string args){
 		if(arguments[2].compare("acceleration") == 0){
 			type = COMPONENT_ACCELERATION;
 		}
+		if(arguments[2].compare("angularVelocity") == 0){
+			type = COMPONENT_ANGULARVELOCITY;
+		}
 		return new Vector(stof(arguments[0]), stof(arguments[1]), type);
 	}
 	return new Vector();
