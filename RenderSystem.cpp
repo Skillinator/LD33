@@ -202,7 +202,6 @@ void RenderSystem::update(float delta){
 
       Vector *vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
       float direction = vel->getDirection();
-      std::cout<<"\n"<<vel->getMagnitude();
       glDisable(GL_TEXTURE_2D);
       glColor4f(0.0, 0.0, 1.0, 1.0);
       

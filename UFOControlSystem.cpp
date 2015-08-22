@@ -56,12 +56,10 @@ void UFOControlSystem::update(float delta){
         if(d)
           horizontal = speed;
       }
-      std::cout<<horizontal<<":"<<vertical<<"\n";
 
       if(!ent->hasComponent(LD33_UFOFLYINGCOMPONENT))
         horizontal = vertical = 0;
 
-      std::cout<<horizontal<<":"<<vertical<<"\n";
 
       vel->setXComponent(horizontal);
       vel->setYComponent(vertical);
