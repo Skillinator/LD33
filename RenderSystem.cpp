@@ -72,7 +72,6 @@ void RenderSystem::update(float delta){
       y = pos->getY();
       z = pos->getZ();
       r = pos->getR();
-      std::cout<<x<<","<<y<<"\n";
 
 
     }else{

@@ -6,4 +6,3 @@ entity
 	component: position 300 100
 	component: vector 0.0 0.0 velocity
 	component: isufo
-	component: ufoflying

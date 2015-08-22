@@ -30,6 +30,7 @@ void UFOControlSystem::update(float delta){
     
     Entity *ent = entityAt(iterator);
     if(ent->hasComponent(LD33_ISUFOCOMPONENT) && ent->hasComponent(COMPONENT_VELOCITY)){
+
       Vector* vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
       bool w, a, s, d, space, shift;
       int speed = 20;
@@ -42,6 +43,31 @@ void UFOControlSystem::update(float delta){
       d = (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS);
       space = (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS);
       shift = (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS);
+
+      if(!space)
+        toggleSpace = false;
+
+      if(space && !toggleSpace){
+        if(ent->hasComponent(LD33_UFOFLYINGCOMPONENT)){
+          ent->removeComponent(LD33_UFOFLYINGCOMPONENT);
+        }else{
+          ent->addComponent(new Property(LD33_UFOFLYINGCOMPONENT));
+        }
+        toggleSpace = true;
+      }
+
+
+      if(!shift)
+        toggleShift = false;
+
+      if(shift && !toggleShift){
+        if(ent->hasComponent(LD33_UFOBEAMINGCOMPONENT)){
+          ent->removeComponent(LD33_UFOBEAMINGCOMPONENT);
+        }else{
+          ent->addComponent(new Property(LD33_UFOBEAMINGCOMPONENT));
+        }
+        toggleShift = true;
+      }
 
       if(w != s){
         if(w)
@@ -63,7 +89,6 @@ void UFOControlSystem::update(float delta){
 
       vel->setXComponent(horizontal);
       vel->setYComponent(vertical);
-
 
 
     }
