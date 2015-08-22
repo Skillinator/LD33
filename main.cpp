@@ -55,6 +55,9 @@ void buildRegistry(){
   theEngine->registry.Register(new Property(LD33_UFOFLYINGCOMPONENT), "ufoflying");
   theEngine->registry.Register(new Property(LD33_ISUFOCOMPONENT), "isufo");
   theEngine->registry.Register(new Property(LD33_UFOBEAMINGCOMPONENT), "ufobeaming");
+  theEngine->registry.Register(new Property(LD33_UFOBEAMEFFECTCOMPONENT), "ufobeameffect");
+  theEngine->registry.Register(new Property(LD33_UFOENGINEEFFECTCOMPONENT), "ufoengineeffect");
+ 
  
 }
 
@@ -69,6 +72,7 @@ int main(){
   theEngine->addSystem(new CenterSystem(windowwidth, windowheight));
   theEngine->addSystem(new TimedMessageSystem());
   theEngine->addSystem(new SceneSystem());
+  theEngine->addSystem(new DepthSystem());
 
 
   /*

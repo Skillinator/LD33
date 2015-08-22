@@ -19,6 +19,7 @@ const int SYSTEM_CLICKDRAG = 8;
 const int SYSTEM_CENTER = 9;
 const int SYSTEM_LOADSCENE = 10;
 const int SYSTEM_TIMEDMESSAGE = 11;
+const int SYSTEM_DEPTH = 12;
 
 class WindowSystem : public System{
 public:
@@ -103,6 +104,12 @@ public:
 class TimedMessageSystem : public System{
 public:
 	TimedMessageSystem();
+	void update(float delta);
+};
+
+class DepthSystem : public System{
+public:
+	DepthSystem();
 	void update(float delta);
 };
 

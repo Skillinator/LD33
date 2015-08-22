@@ -14,7 +14,7 @@
 
 bool is_number(std::string s){
 	for(int x = 0; x < s.size(); x++){
-		if(s[x] >= 46 && s[x] <= 57 && s[x] != 47){
+		if(s[x] >= 45 && s[x] <= 57 && s[x] != 47){
 			// could still be a number
 		}else{
 			return false;

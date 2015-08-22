@@ -29,6 +29,7 @@ Position::Position(float gx, float gy, float gz){
 	id = COMPONENT_POSITION;
 	x = gx;
 	y = gy;
+	z = gz;
 	r = 0;
 }
 

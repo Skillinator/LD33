@@ -42,7 +42,6 @@ int renderMode(Entity* ent){
 }
 
 void RenderSystem::update(float delta){
-
   for(int iterator = 0; iterator < numEntities(); iterator++){
     
     Entity *ent = entityAt(iterator);

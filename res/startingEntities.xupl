@@ -5,4 +5,4 @@ entity
 	component: dimensions 400 100
 	component: position 0 0
 	component: center true true
-	component: timedmessage 2.5 loadMainMenu
+	component: timedmessage 1.0 loadMainMenu

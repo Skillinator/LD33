@@ -33,7 +33,7 @@ void UFOControlSystem::update(float delta){
 
       Vector* vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
       bool w, a, s, d, space, shift;
-      int speed = 20;
+      int speed = 50;
       int vertical, horizontal;
       vertical = horizontal = 0;
 
@@ -83,7 +83,7 @@ void UFOControlSystem::update(float delta){
           horizontal = speed;
       }
 
-      if(!ent->hasComponent(LD33_UFOFLYINGCOMPONENT))
+      if(!ent->hasComponent(LD33_UFOFLYINGCOMPONENT) || ent->hasComponent(LD33_UFOBEAMINGCOMPONENT))
         horizontal = vertical = 0;
 
 

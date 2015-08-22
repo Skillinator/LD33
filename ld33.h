@@ -11,6 +11,8 @@
 const int LD33_ISUFOCOMPONENT = 100;
 const int LD33_UFOFLYINGCOMPONENT = 101;
 const int LD33_UFOBEAMINGCOMPONENT = 102;
+const int LD33_UFOBEAMEFFECTCOMPONENT = 103;
+const int LD33_UFOENGINEEFFECTCOMPONENT = 104;
 
 const int LD33_UFOCONTROLSYSTEM = 101;
 const int LD33_UFOPARTICLESYSTEM = 102;
@@ -25,6 +27,12 @@ class UFOParticleSystem : public System{
 public:
 	UFOParticleSystem();
 	void update(float delta);
+	float ufox;
+	float ufoy;
+	bool toggleBeam;
+	bool toggleEngine;
+	bool beamActive;
+	bool engineActive;
 };
 
 #endif

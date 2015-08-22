@@ -12,6 +12,14 @@ component
 	name: ufobeaming
 	signature: void
 
+component
+	name: ufobeameffect
+	signature: void
+
+component
+	name: ufoengineeffect
+	signature: void
+
 texture
 	name: ufo
 	path: res/ufo.png
