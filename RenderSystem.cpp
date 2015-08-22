@@ -42,6 +42,7 @@ int renderMode(Entity* ent){
 }
 
 void RenderSystem::update(float delta){
+
   for(int iterator = 0; iterator < numEntities(); iterator++){
     
     Entity *ent = entityAt(iterator);
@@ -51,7 +52,7 @@ void RenderSystem::update(float delta){
     Position* pos;
     Texture* tex;
     
-    float x, y, r, w, h;
+    float x, y, z, r, w, h;
     
     if(mode > 0){
       if(mode != 4){
@@ -69,7 +70,10 @@ void RenderSystem::update(float delta){
       pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
       x = pos->getX();
       y = pos->getY();
+      z = pos->getZ();
       r = pos->getR();
+      std::cout<<x<<","<<y<<"\n";
+
 
     }else{
 
@@ -132,7 +136,7 @@ void RenderSystem::update(float delta){
       
       for(int i = 0; i<4; i++){
       
-        glVertex2i(xC[i],yC[i]);
+        glVertex3i(xC[i],yC[i], z);
       
       }
       
@@ -153,7 +157,7 @@ void RenderSystem::update(float delta){
 
       for(int i = 0; i<4; i++){
       
-        glTexCoord2f(xMap[i], yMap[i]); glVertex2i(xC[i], yC[i]);
+        glTexCoord2f(xMap[i], yMap[i]); glVertex3i(xC[i], yC[i], z);
       
       }
 
@@ -180,10 +184,10 @@ void RenderSystem::update(float delta){
         glColor3f(1.0, 1.0, 1.0);
         glBindTexture(GL_TEXTURE_2D, tmpTex->getTex());
         glBegin(GL_QUADS);
-        glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x+padding+size*i*.5, y);
-        glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+size*.5+padding+size*i*.5, y);
-        glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+size*.5+padding+size*i*.5, y+size);
-        glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x+padding+size*i*.5, y+size);
+        glTexCoord2f(xMap[0], yMap[0]); glVertex3i(x+padding+size*i*.5, y, z);
+        glTexCoord2f(xMap[1], yMap[1]); glVertex3i(x+size*.5+padding+size*i*.5, y, z);
+        glTexCoord2f(xMap[2], yMap[2]); glVertex3i(x+size*.5+padding+size*i*.5, y+size, z);
+        glTexCoord2f(xMap[3], yMap[3]); glVertex3i(x+padding+size*i*.5, y+size, z);
         glEnd();
       }
 
@@ -195,26 +199,25 @@ void RenderSystem::update(float delta){
      */
 		
     if(ent->hasComponent(COMPONENT_VELOCITY) && SHOW_VECTORS){
+
       Vector *vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
       float direction = vel->getDirection();
-      
+      std::cout<<"\n"<<vel->getMagnitude();
       glDisable(GL_TEXTURE_2D);
       glColor4f(0.0, 0.0, 1.0, 1.0);
       
-      float centerx = x+w/2;
-      float centery = y+h/2;
-      float endx = centerx + vel->getXComponent();
-      float endy = centery + vel->getYComponent();
+      float endx = x + vel->getXComponent();
+      float endy = y + vel->getYComponent();
       glBegin(GL_TRIANGLE_FAN);
-      glVertex2f(centerx, centery);
+      glVertex2f(x, y);
       for(int theta = 0; theta < 360; theta += 5){
-	       glVertex2f(centerx+sin(theta*3.14/180) * 5, centery + cos(theta*3.14/180) * 5);
+	       glVertex2f(x+sin(theta*3.14/180) * 5, y + cos(theta*3.14/180) * 5);
       }
       glEnd();
       glLineWidth(2.0);
       
       glBegin(GL_LINES);
-      glVertex2f(centerx, centery);
+      glVertex2f(x, y);
       glVertex2f(endx, endy);
       glEnd();
       

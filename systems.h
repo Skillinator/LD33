@@ -16,6 +16,10 @@ const int SYSTEM_RENDER = 5;
 const int SYSTEM_INPUT = 6;
 const int SYSTEM_GARBAGECOLLECT = 7;
 const int SYSTEM_CLICKDRAG = 8;
+const int SYSTEM_CENTER = 9;
+const int SYSTEM_LOADSCENE = 10;
+const int SYSTEM_TIMEDMESSAGE = 11;
+
 class WindowSystem : public System{
 public:
 	WindowSystem();
@@ -73,6 +77,32 @@ public:
 class ClickDragSystem : public System{
 public:
 	ClickDragSystem();
+	void update(float delta);
+};
+
+class CenterSystem : public System{
+public:
+	CenterSystem();
+	CenterSystem(int w, int h);
+	void update(float delta);
+protected:
+	int width;
+	int height;
+};
+
+class SceneSystem : public System{
+public:
+	SceneSystem();
+	void update(float delta);
+	void addScene(std::string name, std::string path);
+
+	std::vector<std::string> names;
+	std::vector<std::string> paths;
+};
+
+class TimedMessageSystem : public System{
+public:
+	TimedMessageSystem();
 	void update(float delta);
 };
 

@@ -11,6 +11,7 @@
 const int MESSAGE_UNDEFINED = -1;
 const int MESSAGE_DELTA = 1;
 const int MESSAGE_CONSOLEOUT = 2;
+const int MESSAGE_CHANGESCENE = 3;
 
 class DeltaMessage : public Message{
 public:
@@ -25,6 +26,25 @@ public:
 	ConsoleOutMessage();
 	ConsoleOutMessage(std::string msg);
 	std::string message;
+};
+
+class LoadMainMenuMessage : public Message{
+public:
+	LoadMainMenuMessage();
+};
+
+class LoadSceneMessage : public Message{
+public:
+	LoadSceneMessage();
+	LoadSceneMessage(std::string s);
+	std::string scene;
+};
+
+class SceneSystemHandler : public MessageHandler{
+public:
+	SceneSystemHandler();
+	void handle(Message*, Entity*);
+	void handle(Message*, System*);
 };
 
 #endif

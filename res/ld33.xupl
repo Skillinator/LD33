@@ -1,0 +1,21 @@
+// Ludum Dare XUPL Definitions
+
+component
+	name: isufo
+	signature: void
+
+component
+	name: ufoflying
+	signature: void
+
+component
+	name: ufobeaming
+	signature: void
+
+texture
+	name: ufo
+	path: res/ufo.png
+
+textureMapped
+	name: ufo
+	tex: ufo

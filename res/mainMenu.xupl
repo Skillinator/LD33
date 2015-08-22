@@ -1,0 +1,9 @@
+resetEntities
+
+entity
+	component: texture ufo
+	component: dimensions 64 64
+	component: position 300 100
+	component: vector 0.0 0.0 velocity
+	component: isufo
+	component: ufoflying

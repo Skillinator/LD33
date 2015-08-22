@@ -22,8 +22,9 @@ void Engine::loadXUPL(std::string path){
 
 		// If space blank or comment, skip it
 		if(theFile[x].size() < 2 || (theFile[x][0] == '/' && theFile[x][1] == '/')){
-		
-			// skip
+			// do nothing
+		}else if(theFile[x] == "resetEntities"){
+			entities.clear();
 		
 		// Component
 		}else if(theFile[x] == "component"){
@@ -183,6 +184,7 @@ int Engine::numEntities(){
 }
 
 void Engine::addEntity(Entity *ent){
+	ent->setPos(entities.size());
 	entities.push_back(ent);
 }
 

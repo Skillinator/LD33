@@ -27,12 +27,16 @@ void MovementSystem::update(float delta){
 			float y = pos->getY();
 			float mag = vel->getMagnitude();
 			float dir = vel->getDirection();
-			
-			float xchange = (mag * delta) * cos(dir);
-			float ychange = (mag * delta) * sin(dir);
-			
-			pos->setX(x+xchange);
-			pos->setY(y+ychange);
+
+			if(mag != 0){
+				
+				float xchange = (mag * delta) * cos(dir);
+				float ychange = (mag * delta) * sin(dir);
+				
+				pos->setX(x+xchange);
+				pos->setY(y+ychange);
+
+			}
 
 			if(ent->hasComponent(COMPONENT_ACCELERATION)){
 				Vector *accel = static_cast<Vector*>(ent->getComponent(COMPONENT_ACCELERATION));

@@ -136,6 +136,7 @@ Seemed more useful when I wrote it. Currently only seems to be used to send the 
 class Message{
 public:
 	Message();
+	Message(int type);
 	int fromType;
 	int messageType;
 };
@@ -172,12 +173,15 @@ class Entity{
 public:
 	Entity();
 	Entity(MessageHandler *gmh);
+	Entity(MessageHandler *gmh, int p);
 	void message(Message* msg);
 	bool addComponent(Component* comp);
 	bool removeComponent(int compID);
 	bool hasComponent(int compID);
 	Component *getComponent(int compID);
 	void update(int delta);
+	void setPos(int p);
+	int pos;
 protected:
 	MessageHandler *mh;
 	std::vector<Component*> components;

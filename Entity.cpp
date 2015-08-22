@@ -29,6 +29,15 @@ Entity::Entity(MessageHandler *gmh){
 	mh = gmh;
 }
 
+Entity::Entity(MessageHandler *gmh, int p){
+	mh = gmh;
+	pos = p;
+}
+
+void Entity::setPos(int p){
+	pos = p;
+}
+
 void Entity::message(Message *msg){
 	mh->handle(msg, this);
 }

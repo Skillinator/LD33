@@ -11,6 +11,14 @@ textureMapped
 	ymaps: 0.0, 0.0, 1.0, 1.0
 
 texture
+	name: splashLogo
+	path: res/splash.png
+
+textureMapped
+	name: splash
+	tex: splashLogo
+
+texture
 	name: alignmentTest
 	path: res/alignmentTest.png
 

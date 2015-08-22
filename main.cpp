@@ -10,10 +10,11 @@
 #include "skilLib.h"
 #include "systems.h"
 #include "components.h"
+#include "ld33.h"
 
-int windowheight = 422;
-int windowwidth = 716;
-std::string title = "RTS-CTF-CONCEPT";
+int windowheight = 875;
+int windowwidth = 1440;
+std::string title = "LD33";
 double libVersion = 0.1;
 
 
@@ -45,23 +46,45 @@ void buildRegistry(){
   theEngine->registry.Register(new Texture(), "texture");
   theEngine->registry.Register(new TextMessage(), "textmessage");
   theEngine->registry.Register(new ClickDrag(), "clickdrag");
+  theEngine->registry.Register(new Center(), "center");
+  theEngine->registry.Register(new TimedMessage(), "timedmessage");
+
+  /*
+  New Ludum Dare Components
+  */
+  theEngine->registry.Register(new Property(LD33_UFOFLYINGCOMPONENT), "ufoflying");
+  theEngine->registry.Register(new Property(LD33_ISUFOCOMPONENT), "isufo");
+  theEngine->registry.Register(new Property(LD33_UFOBEAMINGCOMPONENT), "ufobeaming");
  
 }
 
 int main(){  
   std::cout<<"Loaded SkilLib v" << libVersion << "\n";
-  std::cout<<"Added engine";
   theEngine = new Engine();
   theEngine->addSystem(new WindowSystem(windowwidth, windowheight, "RTS-CTF CONCEPT"));
   theEngine->addSystem(new TimekeeperSystem());
   theEngine->addSystem(new MovementSystem());
   theEngine->addSystem(new RenderSystem());
   theEngine->addSystem(new ClickDragSystem());
-  std::cout<<"Systems added";
+  theEngine->addSystem(new CenterSystem(windowwidth, windowheight));
+  theEngine->addSystem(new TimedMessageSystem());
+  theEngine->addSystem(new SceneSystem());
+
+
+  /*
+  LD33 Specific Systems
+  */
+
+  theEngine->addSystem(new UFOControlSystem());
+  theEngine->addSystem(new UFOParticleSystem());
+
+  std::cout<<"\nSystems added\n";
+
+  theEngine->loadXUPL("res/ld33.xupl");
 
   buildRegistry();
 
-  std::cout<<"Registry built";
+  std::cout<<"\nRegistry built\n";
   
   theEngine->loadXUPL("res/startingEntities.xupl");
 	

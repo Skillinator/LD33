@@ -10,7 +10,9 @@ component
 	signature: ii
 	signature: fff
 	signature: iii
-
+	signature: ffff
+	signature: iiii
+	
 component
 	name: dimensions
 	signature: ii
@@ -36,3 +38,10 @@ component
 	name: clickdrag
 	signature: v
 	
+component
+	name: center
+	signature: bb
+
+component
+	name: timedmessage
+	signature: fs

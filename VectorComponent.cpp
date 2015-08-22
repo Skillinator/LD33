@@ -12,6 +12,8 @@
 #include "components.h"
 #include <math.h>
 
+const float PI = 3.141592654;
+
 Vector::Vector(){
 	id = COMPONENT_VECTOR;
 	magnitude = 0.0;
@@ -64,6 +66,12 @@ void Vector::updateComponents(){
 
 void Vector::updateDirection(){
 	direction = atan(yComponent/xComponent);
+	if(xComponent < 0)
+		direction += PI;
+
+	if(direction > 2*PI)
+		direction -= 2*PI;
+	
 	magnitude = sqrt(pow(xComponent,2) + pow(yComponent,2));
 }
 

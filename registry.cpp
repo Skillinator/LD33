@@ -112,6 +112,7 @@ Component* Registry::getComponent(std::string args){
 	std::string name = arguments.at(0);
 
 	for(int x = 1; x<arguments.size(); x++){
+
 		std::string tmp=arguments.at(x);
 
 		if(tmp[0] == '\'' || tmp[0] == '"'){
@@ -137,6 +138,9 @@ Component* Registry::getComponent(std::string args){
 
 		}
 	}
+
+	if(signature == "")
+		signature = "void";
 	
 	for(int x = 0; x < components.size(); x++){
 

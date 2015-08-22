@@ -20,6 +20,9 @@ const int COMPONENT_ACCELERATION = 7;
 const int COMPONENT_TEXTMESSAGE = 8;
 const int COMPONENT_ANGULARVELOCITY = 9;
 const int COMPONENT_CLICKDRAG = 10;
+const int COMPONENT_CENTER = 11;
+const int COMPONENT_TIMEDMESSAGE = 12;
+const int COMPONENT_PROPERTY = 13;
 
 class NullComponent : public Component{
 public:
@@ -48,16 +51,19 @@ class Position : public Component{
 public:
 	Position();
 	Position(float gx, float gy);
-	Position(float gx, float gy, float gr);
+	Position(float gx, float gy, float gz);
+	Position(float gx, float gy, float gz, float gr);
 	Component *spawn(std::string, std::string);
 	float getX();
 	float getY();
+	float getZ();
 	float getR();
 	void setX(float get);
 	void setY(float get);
+	void setZ(float get);
 	void setR(float get);
 protected:
-	float x, y, r;
+	float x, y, z, r;
 };
 
 class Dimensions : public Component{
@@ -142,10 +148,43 @@ public:
 
 	void initiate(float x, float y);
 	void release();
-private:
+protected:
 	float xOffset;
 	float yOffset;
 	bool active;
+};
+
+class Center : public Component{
+public:
+	Component* spawn(std::string, std::string);
+	Center();
+	Center(bool h, bool v);
+	bool getHorizontal();
+	bool getVertical();
+	void setHorizontal(bool);
+	void setVertical(bool);
+protected:
+	bool horizontal;
+	bool vertical;
+};
+
+class TimedMessage : public Component{
+public:
+	Component *spawn(std::string, std::string);
+	TimedMessage();
+	TimedMessage(float t, std::string m);
+	void progress(float delta);
+	std::string getTarget();
+	float getTime();
+	float remaining;
+	std::string message;
+};
+
+class Property : public Component{
+public:
+	Component *spawn(std::string, std::string);
+	Property();
+	Property(int gID);
 };
 
 #endif
