@@ -35,66 +35,66 @@ texture
 textureMapped
 	name: roadStraightHorizontal
 	tex: roadSpriteSheet
-	xmaps: 0.75, 1.0, 1.0, 0.75
-	ymaps: 0.75, 0.75, 1.0, 1.0
+	xmaps: 0.4, 0.5, 0.5, 0.4
+	ymaps: 0.8, 0.8, 0.9, 0.9
 
 textureMapped
 	name: roadStraightVertical
 	tex: roadSpriteSheet
-	xmaps: 0.5, 0.75, 0.75, 0.5
-	ymaps: 0.5, 0.5, 0.75, 0.75
+	xmaps: 0.3, 0.4, 0.4, 0.3
+	ymaps: 0.7, 0.7, 0.8, 0.8
 
 textureMapped
 	name: roadCrossroads
 	tex: roadSpriteSheet
-	xmaps: 0.5, 0.75, 0.75, 0.5
-	ymaps: 0.25, 0.25, 0.5, 0.5
+	xmaps: 0.3, 0.4, 0.4, 0.3
+	ymaps: 0.6, 0.6, 0.7, 0.7
 
 textureMapped
 	name: roadLSouthEast
 	tex: roadSpriteSheet
-	xmaps: 0.0, 0.25, 0.25, 0.0
-	ymaps: 0.75, 0.75, 1.0, 1.0
+	xmaps: 0.1, 0.2, 0.2, 0.1
+	ymaps: 0.8, 0.8, 0.9, 0.9
 
 textureMapped
 	name: roadLSouthWest
 	tex: roadSpriteSheet
-	xmaps: 0.25, 0.5, 0.5, 0.25
-	ymaps: 0.75, 0.75, 1.0, 1.0
+	xmaps: 0.2, 0.3, 0.3, 0.2
+	ymaps: 0.8, 0.8, 0.9, 0.9
 
 textureMapped
 	name: roadLNorthEast
 	tex: roadSpriteSheet
-	xmaps: 0.0, 0.25, 0.25, 0.0
-	ymaps: 0.5, 0.5, 0.75, 0.75
+	xmaps: 0.1, 0.2, 0.2, 0.1
+	ymaps: 0.7, 0.7, 0.8, 0.8
 
 textureMapped
 	name: roadLNorthWest
 	tex: roadSpriteSheet
-	xmaps: 0.25, 0.5, 0.5, 0.25
-	ymaps: 0.5, 0.5, 0.75, 0.75
+	xmaps: 0.2, 0.3, 0.3, 0.2
+	ymaps: 0.7, 0.7, 0.8, 0.8
 
 textureMapped
 	name: roadTNorth
 	tex: roadSpriteSheet
-	xmaps: 0.25, 0.5, 0.5, 0.25
-	ymaps: 0.25, 0.25, 0.5, 0.5
+	xmaps: 0.2, 0.3, 0.3, 0.2
+	ymaps: 0.6, 0.6, 0.7, 0.7
 
 textureMapped
 	name: roadTEast
 	tex: roadSpriteSheet
-	xmaps: 0.5, 0.75, 0.75, 0.5
-	ymaps: 0.75, 0.75, 1.0, 1.0
+	xmaps: 0.3, 0.4, 0.4, 0.3
+	ymaps: 0.8, 0.8, 0.9, 0.9
 
 textureMapped
 	name: roadTSouth
 	tex: roadSpriteSheet
-	xmaps: 0.75, 1.0, 1.0, 0.75
-	ymaps: 0.5, 0.5, 0.75, 0.75
+	xmaps: 0.4, 0.5, 0.5, 0.4
+	ymaps: 0.7, 0.7, 0.8, 0.8
 
 textureMapped
 	name: roadTWest
 	tex: roadSpriteSheet
-	xmaps: 0.75, 1.0, 1.0, 0.75
-	ymaps: 0.25, 0.25, 0.5, 0.5
+	xmaps: 0.4, 0.5, 0.5, 0.4
+	ymaps: 0.6, 0.6, 0.7, 0.7
 

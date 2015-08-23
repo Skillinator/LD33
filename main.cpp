@@ -65,7 +65,7 @@ void buildRegistry(){
 int main(){  
   std::cout<<"Loaded SkilLib v" << libVersion << "\n";
   theEngine = new Engine();
-  theEngine->addSystem(new WindowSystem(windowwidth, windowheight, "RTS-CTF CONCEPT"));
+  theEngine->addSystem(new WindowSystem(windowwidth, windowheight, title));
   theEngine->addSystem(new TimekeeperSystem());
   theEngine->addSystem(new MovementSystem());
   theEngine->addSystem(new RenderSystem());
