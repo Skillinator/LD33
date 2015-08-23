@@ -6,3 +6,184 @@ entity
 	component: position 300.0 100.0
 	component: vector 0.0 0.0 velocity
 	component: isufo
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 0 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 128 640 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 256 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 384 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 512 640 -2
+	component: scroll
+
+entity
+	component: texture roadTNorth
+	component: dimensions 128 128
+	component: position 640 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 768 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 896 640 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 1024 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1152 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1280 640 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 1408 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1536 640 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1664 640 -2
+	component: scroll
+
+entity
+	component: texture roadTWest
+	component: dimensions 128 128
+	component: position 1792 640 -2
+	component: scroll
+
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 256 768 -2
+	component: scroll
+
+entity
+	component: texture roadLSouthEast
+	component: dimensions 128 128
+	component: position 256 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 256 512 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 256 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 256 256 -2
+	component: scroll
+
+entity
+	component: texture roadTEast
+	component: dimensions 128 128
+	component: position 256 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 384 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 512 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 640 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 768 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 896 128 -2
+	component: scroll
+
+entity
+	component: texture roadLNorthWest
+	component: dimensions 128 128
+	component: position 1024 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1024 256 -2
+	component: scroll
+
+entity
+	component: texture roadTEast
+	component: dimensions 128 128
+	component: position 1024 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1024 512 -2
+	component: scroll

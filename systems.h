@@ -20,6 +20,7 @@ const int SYSTEM_CENTER = 9;
 const int SYSTEM_LOADSCENE = 10;
 const int SYSTEM_TIMEDMESSAGE = 11;
 const int SYSTEM_DEPTH = 12;
+const int SYSTEM_SCROLL = 13;
 
 class WindowSystem : public System{
 public:
@@ -111,6 +112,16 @@ class DepthSystem : public System{
 public:
 	DepthSystem();
 	void update(float delta);
+};
+
+class ScrollSystem : public System{
+public:
+	ScrollSystem();
+	ScrollSystem(int mw, int mh);
+	void update(float delta);
+
+	int mapWidth;
+	int mapHeight;
 };
 
 #endif

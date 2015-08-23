@@ -27,8 +27,8 @@ void SceneSystemHandler::handle(Message *m, Entity *ent){
 
 void SceneSystemHandler::handle(Message *m, System *sys){
 	SceneSystem *ss = static_cast<SceneSystem*>(sys);
-	LoadSceneMessage *lsm = static_cast<LoadSceneMessage*>(m);
 	if(m->messageType == MESSAGE_CHANGESCENE){
+		LoadSceneMessage *lsm = static_cast<LoadSceneMessage*>(m);
 		for(int i = 0; i < ss->names.size(); i++){
 			if(ss->names.size() == 0)
 				return;

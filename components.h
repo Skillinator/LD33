@@ -23,6 +23,7 @@ const int COMPONENT_CLICKDRAG = 10;
 const int COMPONENT_CENTER = 11;
 const int COMPONENT_TIMEDMESSAGE = 12;
 const int COMPONENT_PROPERTY = 13;
+const int COMPONENT_SCROLL = 14;
 
 class NullComponent : public Component{
 public:

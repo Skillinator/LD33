@@ -15,6 +15,9 @@
 #include "ld33.h"
 
 extern Engine* theEngine;
+extern int windowwidth;
+extern int windowheight;
+
 const float PI = 3.141592654;
 
 bool toggleShift = false;
@@ -33,7 +36,7 @@ void UFOControlSystem::update(float delta){
 
       Vector* vel = static_cast<Vector*>(ent->getComponent(COMPONENT_VELOCITY));
       bool w, a, s, d, space, shift;
-      int speed = 50;
+      int speed = 150;
       int vertical, horizontal;
       vertical = horizontal = 0;
 
@@ -86,9 +89,21 @@ void UFOControlSystem::update(float delta){
       if(!ent->hasComponent(LD33_UFOFLYINGCOMPONENT) || ent->hasComponent(LD33_UFOBEAMINGCOMPONENT))
         horizontal = vertical = 0;
 
+      Position* pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
 
-      vel->setXComponent(horizontal);
-      vel->setYComponent(vertical);
+      if((pos->getX() < 32 && horizontal < 0) || (pos->getX() > windowwidth-32 && horizontal > 0)){
+        messageSystems(new ScrollMessage(horizontal*delta, 0));
+        vel->setXComponent(0);
+      }else{
+        vel->setXComponent(horizontal);
+      }
+
+      if((pos->getY() < 32 && vertical < 0) || (pos->getY() > windowheight-32 && vertical > 0)){
+        messageSystems(new ScrollMessage(0, vertical*delta));
+        vel->setYComponent(0);
+      }else{
+        vel->setYComponent(vertical);
+      }
 
 
     }

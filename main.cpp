@@ -48,6 +48,7 @@ void buildRegistry(){
   theEngine->registry.Register(new ClickDrag(), "clickdrag");
   theEngine->registry.Register(new Center(), "center");
   theEngine->registry.Register(new TimedMessage(), "timedmessage");
+  theEngine->registry.Register(new Property(COMPONENT_SCROLL), "scroll");
 
   /*
   New Ludum Dare Components
@@ -73,6 +74,7 @@ int main(){
   theEngine->addSystem(new TimedMessageSystem());
   theEngine->addSystem(new SceneSystem());
   theEngine->addSystem(new DepthSystem());
+  theEngine->addSystem(new ScrollSystem(2048, 2048));
 
 
   /*
@@ -88,6 +90,7 @@ int main(){
 
   buildRegistry();
 
+  theEngine->registry.dump();
   std::cout<<"\nRegistry built\n";
   
   theEngine->loadXUPL("res/startingEntities.xupl");

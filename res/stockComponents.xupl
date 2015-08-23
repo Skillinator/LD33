@@ -45,3 +45,7 @@ component
 component
 	name: timedmessage
 	signature: fs
+
+component
+	name: scroll
+	signature: void

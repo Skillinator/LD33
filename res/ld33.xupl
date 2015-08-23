@@ -27,3 +27,74 @@ texture
 textureMapped
 	name: ufo
 	tex: ufo
+
+texture
+	name: roadSpriteSheet
+	path: res/roadSpriteSheet.png
+
+textureMapped
+	name: roadStraightHorizontal
+	tex: roadSpriteSheet
+	xmaps: 0.75, 1.0, 1.0, 0.75
+	ymaps: 0.75, 0.75, 1.0, 1.0
+
+textureMapped
+	name: roadStraightVertical
+	tex: roadSpriteSheet
+	xmaps: 0.5, 0.75, 0.75, 0.5
+	ymaps: 0.5, 0.5, 0.75, 0.75
+
+textureMapped
+	name: roadCrossroads
+	tex: roadSpriteSheet
+	xmaps: 0.5, 0.75, 0.75, 0.5
+	ymaps: 0.25, 0.25, 0.5, 0.5
+
+textureMapped
+	name: roadLSouthEast
+	tex: roadSpriteSheet
+	xmaps: 0.0, 0.25, 0.25, 0.0
+	ymaps: 0.75, 0.75, 1.0, 1.0
+
+textureMapped
+	name: roadLSouthWest
+	tex: roadSpriteSheet
+	xmaps: 0.25, 0.5, 0.5, 0.25
+	ymaps: 0.75, 0.75, 1.0, 1.0
+
+textureMapped
+	name: roadLNorthEast
+	tex: roadSpriteSheet
+	xmaps: 0.0, 0.25, 0.25, 0.0
+	ymaps: 0.5, 0.5, 0.75, 0.75
+
+textureMapped
+	name: roadLNorthWest
+	tex: roadSpriteSheet
+	xmaps: 0.25, 0.5, 0.5, 0.25
+	ymaps: 0.5, 0.5, 0.75, 0.75
+
+textureMapped
+	name: roadTNorth
+	tex: roadSpriteSheet
+	xmaps: 0.25, 0.5, 0.5, 0.25
+	ymaps: 0.25, 0.25, 0.5, 0.5
+
+textureMapped
+	name: roadTEast
+	tex: roadSpriteSheet
+	xmaps: 0.5, 0.75, 0.75, 0.5
+	ymaps: 0.75, 0.75, 1.0, 1.0
+
+textureMapped
+	name: roadTSouth
+	tex: roadSpriteSheet
+	xmaps: 0.75, 1.0, 1.0, 0.75
+	ymaps: 0.5, 0.5, 0.75, 0.75
+
+textureMapped
+	name: roadTWest
+	tex: roadSpriteSheet
+	xmaps: 0.75, 1.0, 1.0, 0.75
+	ymaps: 0.25, 0.25, 0.5, 0.5
+

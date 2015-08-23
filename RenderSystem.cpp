@@ -20,7 +20,7 @@ RenderSystem::RenderSystem(){
 	id = SYSTEM_RENDER;
 }
 
-bool SHOW_VECTORS = true;
+bool SHOW_VECTORS = false;
 
 int renderMode(Entity* ent){
 
@@ -42,7 +42,9 @@ int renderMode(Entity* ent){
 }
 
 void RenderSystem::update(float delta){
+
   for(int iterator = 0; iterator < numEntities(); iterator++){
+
     
     Entity *ent = entityAt(iterator);
     int mode = renderMode(ent);
@@ -134,7 +136,7 @@ void RenderSystem::update(float delta){
       
       for(int i = 0; i<4; i++){
       
-        glVertex3i(xC[i],yC[i], z);
+        glVertex2i(xC[i],yC[i]);
       
       }
       
@@ -143,7 +145,6 @@ void RenderSystem::update(float delta){
 
     // Textured Mode
     if(mode == 3){
-
       tex = static_cast<Texture*>(ent->getComponent(COMPONENT_TEXTURE));
       float *xMap = tex->tex->x;
       float *yMap = tex->tex->y;
@@ -155,7 +156,7 @@ void RenderSystem::update(float delta){
 
       for(int i = 0; i<4; i++){
       
-        glTexCoord2f(xMap[i], yMap[i]); glVertex3i(xC[i], yC[i], z);
+        glTexCoord2f(xMap[i], yMap[i]); glVertex2i(xC[i], yC[i]);
       
       }
 
@@ -182,10 +183,10 @@ void RenderSystem::update(float delta){
         glColor3f(1.0, 1.0, 1.0);
         glBindTexture(GL_TEXTURE_2D, tmpTex->getTex());
         glBegin(GL_QUADS);
-        glTexCoord2f(xMap[0], yMap[0]); glVertex3i(x+padding+size*i*.5, y, z);
-        glTexCoord2f(xMap[1], yMap[1]); glVertex3i(x+size*.5+padding+size*i*.5, y, z);
-        glTexCoord2f(xMap[2], yMap[2]); glVertex3i(x+size*.5+padding+size*i*.5, y+size, z);
-        glTexCoord2f(xMap[3], yMap[3]); glVertex3i(x+padding+size*i*.5, y+size, z);
+        glTexCoord2f(xMap[0], yMap[0]); glVertex2i(x+padding+size*i*.5, y);
+        glTexCoord2f(xMap[1], yMap[1]); glVertex2i(x+size*.5+padding+size*i*.5, y);
+        glTexCoord2f(xMap[2], yMap[2]); glVertex2i(x+size*.5+padding+size*i*.5, y+size);
+        glTexCoord2f(xMap[3], yMap[3]); glVertex2i(x+padding+size*i*.5, y+size);
         glEnd();
       }
 
