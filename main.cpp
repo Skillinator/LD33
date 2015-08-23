@@ -12,8 +12,8 @@
 #include "components.h"
 #include "ld33.h"
 
-int windowheight = 875;
-int windowwidth = 1440;
+int windowheight = 720;
+int windowwidth = 1280;
 std::string title = "LD33";
 double libVersion = 0.1;
 
@@ -49,6 +49,7 @@ void buildRegistry(){
   theEngine->registry.Register(new Center(), "center");
   theEngine->registry.Register(new TimedMessage(), "timedmessage");
   theEngine->registry.Register(new Property(COMPONENT_SCROLL), "scroll");
+  theEngine->registry.Register(new BarGraph(), "bargraph");
 
   /*
   New Ludum Dare Components
@@ -58,7 +59,7 @@ void buildRegistry(){
   theEngine->registry.Register(new Property(LD33_UFOBEAMINGCOMPONENT), "ufobeaming");
   theEngine->registry.Register(new Property(LD33_UFOBEAMEFFECTCOMPONENT), "ufobeameffect");
   theEngine->registry.Register(new Property(LD33_UFOENGINEEFFECTCOMPONENT), "ufoengineeffect");
- 
+  theEngine->registry.Register(new Property(LD33_ABDUCTIBLECOMPONENT), "abductible");
  
 }
 
@@ -75,6 +76,7 @@ int main(){
   theEngine->addSystem(new SceneSystem());
   theEngine->addSystem(new DepthSystem());
   theEngine->addSystem(new ScrollSystem(2048, 2048));
+  theEngine->addSystem(new BarGraphSystem());
 
 
   /*
@@ -83,6 +85,7 @@ int main(){
 
   theEngine->addSystem(new UFOControlSystem());
   theEngine->addSystem(new UFOParticleSystem());
+  theEngine->addSystem(new AbductionSystem());
 
   std::cout<<"\nSystems added\n";
 
@@ -90,7 +93,6 @@ int main(){
 
   buildRegistry();
 
-  theEngine->registry.dump();
   std::cout<<"\nRegistry built\n";
   
   theEngine->loadXUPL("res/startingEntities.xupl");

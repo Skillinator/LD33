@@ -25,6 +25,7 @@ bool toggleSpace = false;
 
 UFOControlSystem::UFOControlSystem(){
 	id = LD33_UFOCONTROLSYSTEM;
+  UFOBob = 0;
 }
 
 void UFOControlSystem::update(float delta){
@@ -98,13 +99,22 @@ void UFOControlSystem::update(float delta){
         vel->setXComponent(horizontal);
       }
 
-      if((pos->getY() < 32 && vertical < 0) || (pos->getY() > windowheight-32 && vertical > 0)){
+      if((pos->getY() < 32 && vertical < 0) || (pos->getY() > windowheight-32-136 && vertical > 0)){
         messageSystems(new ScrollMessage(0, vertical*delta));
         vel->setYComponent(0);
       }else{
         vel->setYComponent(vertical);
       }
 
+
+      UFOBob += 2* delta;
+      if(UFOBob > 2*3.14)
+        UFOBob = 0;
+      
+      Vector v = Vector(10*cos(UFOBob), 3.14159/2);
+
+      if(ent->hasComponent(LD33_UFOFLYINGCOMPONENT))
+        vel->add(v);
 
     }
     

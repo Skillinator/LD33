@@ -49,3 +49,8 @@ component
 component
 	name: scroll
 	signature: void
+
+// Signature: string graphID float centerx float centery float max float orientation
+component
+	name: bargraph
+	signature: sfffff

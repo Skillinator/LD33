@@ -24,6 +24,7 @@ const int COMPONENT_CENTER = 11;
 const int COMPONENT_TIMEDMESSAGE = 12;
 const int COMPONENT_PROPERTY = 13;
 const int COMPONENT_SCROLL = 14;
+const int COMPONENT_BARGRAPH = 15;
 
 class NullComponent : public Component{
 public:
@@ -186,6 +187,20 @@ public:
 	Component *spawn(std::string, std::string);
 	Property();
 	Property(int gID);
+};
+
+class BarGraph : public Component{
+public:
+	Component* spawn(std::string, std::string);
+	BarGraph();
+	BarGraph(std::string gID, float centerx, float centery, float rat, float max, float orientation);
+	std::string gid;
+	float maximum;
+	float x;
+	float y;
+	float dir;
+	float ratio;
+
 };
 
 #endif

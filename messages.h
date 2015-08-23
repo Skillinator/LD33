@@ -13,6 +13,8 @@ const int MESSAGE_DELTA = 1;
 const int MESSAGE_CONSOLEOUT = 2;
 const int MESSAGE_CHANGESCENE = 3;
 const int MESSAGE_SCROLL = 4;
+const int MESSAGE_BARGRAPH_CHANGE = 5;
+const int MESSAGE_BARGRAPH_SET = 6;
 
 class DeltaMessage : public Message{
 public:
@@ -53,6 +55,29 @@ public:
 	ScrollSystemHandler();
 	void handle(Message*, Entity*);
 	void handle(Message*, System*);
+};
+
+class BarGraphSystemHandler : public MessageHandler{
+public:
+	BarGraphSystemHandler();
+	void handle(Message*, Entity*);
+	void handle(Message*, System*);
+};
+
+class ChangeBarGraphMessage : public Message{
+public:
+	ChangeBarGraphMessage();
+	ChangeBarGraphMessage(std::string tar, float delta);
+	std::string target;
+	float change;
+};
+
+class SetBarGraphMessage : public Message{
+public:
+	SetBarGraphMessage();
+	SetBarGraphMessage(std::string tar, float val);
+	std::string target;
+	float value;
 };
 
 class ScrollMessage : public Message{

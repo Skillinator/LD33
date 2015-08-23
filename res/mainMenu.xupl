@@ -1,11 +1,94 @@
 resetEntities
 
 entity
+	component: color 0.0 0.0 0.0 1.0
+	component: dimensions 1920 155
+	component: position 960 798
+
+entity
+	component: color 0.0 0.0 0.0 1.0
+	component: dimensions 160 1080
+	component: position 1360 540
+
+entity
 	component: texture ufo
 	component: dimensions 64 64
 	component: position 300.0 100.0
 	component: vector 0.0 0.0 velocity
 	component: isufo
+
+entity
+	component: color 1.0 0.0 0.0 1.0
+	component: dimensions 16 16
+	component: position 300 300
+	component: vector velocity 0 0
+	component: abductible
+
+entity
+	component: color 1.0 0.0 0.0 1.0
+	component: dimensions 10 32
+	component: position 37 656 3
+	component: bargraph suspicion 132.0 770.0 2.0 100.0 1.0
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 210 36
+	component: position 132 656 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 320 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 470 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 620 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 770 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 920 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 1070 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 320 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 320 655 2
+
+entity
+	component: color 0.2 0.2 0.2 1.0
+	component: dimensions 120 120
+	component: position 320 655 2
+
+entity
+	component: color 0.3 0.3 0.3 1.0
+	component: dimensions 1280 136
+	component: position 640 657 1
+
+entity
+	component: textmessage "Suspicion" fixedWhite 32 10
+	component: position 25 680 2
+
 
 entity
 	component: texture roadStraightHorizontal
@@ -186,4 +269,228 @@ entity
 	component: texture roadStraightVertical
 	component: dimensions 128 128
 	component: position 1024 512 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 384 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 512 896 -2
+	component: scroll
+
+entity
+	component: texture roadTSouth
+	component: dimensions 128 128
+	component: position 640 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 640 768 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 768 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 896 896 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 1024 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1024 768 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1152 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1280 896 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 1408 896 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1408 768 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1408 512 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1408 256 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1408 128 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1408 0 -2
+	component: scroll
+
+entity
+	component: texture roadCrossroads
+	component: dimensions 128 128
+	component: position 1408 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1152 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1280 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1536 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1664 384 -2
+	component: scroll
+
+entity
+	component: texture roadLNorthWest
+	component: dimensions 128 128
+	component: position 1792 384 -2
+	component: scroll
+
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1792 512 -2
+	component: scroll
+	
+entity
+	component: texture roadStraightVertical
+	component: dimensions 128 128
+	component: position 1792 768 -2
+	component: scroll
+	
+
+entity
+	component: texture roadLSouthWest
+	component: dimensions 128 128
+	component: position 1792 896 -2
+	component: scroll
+	
+
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1664 896 -2
+	component: scroll
+	
+entity
+	component: texture roadStraightHorizontal
+	component: dimensions 128 128
+	component: position 1536 896 -2
+	component: scroll
+	
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 0 512 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 0 384 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 0 256 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 0 128 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 0 0 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 128 512 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 128 384 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 128 256 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 128 128 -2
+	component: scroll
+
+entity
+	component: texture cornfield
+	component: dimensions 128 192
+	component: position 128 0 -2
 	component: scroll

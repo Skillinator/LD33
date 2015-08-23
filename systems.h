@@ -21,6 +21,7 @@ const int SYSTEM_LOADSCENE = 10;
 const int SYSTEM_TIMEDMESSAGE = 11;
 const int SYSTEM_DEPTH = 12;
 const int SYSTEM_SCROLL = 13;
+const int SYSTEM_BARGRAPH = 14;
 
 class WindowSystem : public System{
 public:
@@ -122,6 +123,12 @@ public:
 
 	int mapWidth;
 	int mapHeight;
+};
+
+class BarGraphSystem : public System{
+public:
+	BarGraphSystem();
+	void update(float delta);
 };
 
 #endif
