@@ -22,7 +22,7 @@ GLFWwindow* window;
 
 Engine *theEngine;
 
-bool final = false;
+bool final = true;
 
 Registry* getRegistry(){
   return &(theEngine->registry);

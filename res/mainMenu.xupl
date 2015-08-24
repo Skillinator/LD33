@@ -19,14 +19,6 @@ entity
 
 entity
 	component: color 1.0 0.0 0.0 1.0
-	component: dimensions 16 16
-	component: position 300 300
-	component: abductible
-	component: releasable
-	component: employable
-
-entity
-	component: color 1.0 0.0 0.0 1.0
 	component: dimensions 10 32
 	component: position 37 656 3
 	component: bargraph suspicion 132.0 770.0 2.0 100.0 1.0
@@ -104,7 +96,7 @@ entity
 	component: scroll
 	component: abductible
 	component: winprogress
-	
+
 entity
 	component: texture roadStraightHorizontal
 	component: dimensions 128 128

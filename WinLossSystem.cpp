@@ -22,17 +22,16 @@ WinLossSystem::WinLossSystem(){
 }
 
 void WinLossSystem::update(float delta){
-	if(winprogress == 5){
+	if(winprogress >= 5){
 		winprogress = 0;
 		notoriety = 0;
 		messageSystems(new LoadSceneMessage("win"));
 	}
 
-	if(notoriety>100){
+	if(notoriety>120){
 		winprogress = 0;
 		notoriety = 0;
 		messageSystems(new LoadSceneMessage("lose"));
 	}
 	notoriety += delta;
-	std::cout<<notoriety<<"\n";
 }

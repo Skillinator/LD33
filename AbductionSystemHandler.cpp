@@ -51,7 +51,6 @@ void AbductionSystemHandler::handle(Message *m, System *sys){
 			for(int i = 0; i < theEngine->numEntities(); i++){
 				Entity* ent = theEngine->getEntity(i);
 
-				ent->addComponent(new Property(COMPONENT_SCROLL));
 				if(ent->hasComponent(LD33_ISUFOCOMPONENT)){
 					
 					Position *pos = static_cast<Position*>(ent->getComponent(COMPONENT_POSITION));
@@ -71,26 +70,28 @@ void AbductionSystemHandler::handle(Message *m, System *sys){
 						pos->setX(x);
 						pos->setY(y-32);
 
+						ent->addComponent(new Property(COMPONENT_SCROLL));
+						
 						if(ent->hasComponent(LD33_ISDJ) && ent->hasComponent(LD33_BRAINWASHEDCOMPONENT)){
-							Entity* ent = new Entity();
-							ent->addComponent(new Dimensions(128, 128));
-							ent->addComponent(new Texture("book"));
-							ent->addComponent(new Property(LD33_ABDUCTIBLECOMPONENT));
-							ent->addComponent(new Property(LD33_WINPROGRESS));
-							ent->addComponent(new Position(768+scrollx, 640+scrolly));
-							ent->addComponent(new Property(COMPONENT_SCROLL));
-							theEngine->addEntity(ent);
+							Entity* ent2 = new Entity();
+							ent2->addComponent(new Dimensions(128, 128));
+							ent2->addComponent(new Texture("book"));
+							ent2->addComponent(new Property(LD33_ABDUCTIBLECOMPONENT));
+							ent2->addComponent(new Property(LD33_WINPROGRESS));
+							ent2->addComponent(new Position(768+scrollx, 640+scrolly));
+							ent2->addComponent(new Property(COMPONENT_SCROLL));
+							theEngine->addEntity(ent2);
 						}
 
 						if(ent->hasComponent(LD33_ISENGINEER) && ent->hasComponent(LD33_BRAINWASHEDCOMPONENT)){
-							Entity* ent = new Entity();
-							ent->addComponent(new Dimensions(128, 128));
-							ent->addComponent(new Texture("fuel"));
-							ent->addComponent(new Property(LD33_ABDUCTIBLECOMPONENT));
-							ent->addComponent(new Property(LD33_WINPROGRESS));
-							ent->addComponent(new Position(1216+scrollx, 640+scrollx));
-							ent->addComponent(new Property(COMPONENT_SCROLL));
-							theEngine->addEntity(ent);
+							Entity* ent2 = new Entity();
+							ent2->addComponent(new Dimensions(128, 128));
+							ent2->addComponent(new Texture("fuel"));
+							ent2->addComponent(new Property(LD33_ABDUCTIBLECOMPONENT));
+							ent2->addComponent(new Property(LD33_WINPROGRESS));
+							ent2->addComponent(new Position(1216+scrollx, 640+scrollx));
+							ent2->addComponent(new Property(COMPONENT_SCROLL));
+							theEngine->addEntity(ent2);
 						}
 
 					}else{
