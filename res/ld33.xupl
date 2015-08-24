@@ -188,7 +188,7 @@ textureMapped
 	name: hose
 	tex: roadSpriteSheet
 	xmaps: 0.3, 0.4, 0.4, 0.3
-	ymaps: 0.1, 0.2, 0.2, 0.2
+	ymaps: 0.1, 0.1, 0.2, 0.2
 
 textureMapped
 	name: firestation
