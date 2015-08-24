@@ -21,6 +21,12 @@ SceneSystem::SceneSystem(){
   handler = new SceneSystemHandler();
   names.push_back("main");
   paths.push_back("res/mainMenu.xupl");
+
+  names.push_back("win");
+  paths.push_back("res/win.xupl");
+
+  names.push_back("lose");
+  paths.push_back("res/lose.xupl");
 }
 
 void SceneSystem::update(float delta){

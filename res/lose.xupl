@@ -1,0 +1,6 @@
+resetEntities
+
+entity
+	component: textmessage "Unfortunately you did not find the parts in time. You must try again in a new (identical, lol) town." fixedWhite 32 10
+	component: position 25 200 2
+	component: timedmessage 5.0 loadMainMenu

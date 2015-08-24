@@ -22,6 +22,7 @@ const int SYSTEM_TIMEDMESSAGE = 11;
 const int SYSTEM_DEPTH = 12;
 const int SYSTEM_SCROLL = 13;
 const int SYSTEM_BARGRAPH = 14;
+const int SYSTEM_STRINGMESSAGEONCLICK = 15;
 
 class WindowSystem : public System{
 public:
@@ -131,4 +132,9 @@ public:
 	void update(float delta);
 };
 
+class StringMessageOnClickSystem : public System{
+public:
+	StringMessageOnClickSystem();
+	void update(float delta);
+};
 #endif

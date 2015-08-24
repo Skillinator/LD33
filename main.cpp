@@ -22,6 +22,8 @@ GLFWwindow* window;
 
 Engine *theEngine;
 
+bool final = false;
+
 Registry* getRegistry(){
   return &(theEngine->registry);
 }
@@ -50,6 +52,8 @@ void buildRegistry(){
   theEngine->registry.Register(new TimedMessage(), "timedmessage");
   theEngine->registry.Register(new Property(COMPONENT_SCROLL), "scroll");
   theEngine->registry.Register(new BarGraph(), "bargraph");
+  theEngine->registry.Register(new StringMessageOnClick(), "stringmessageonclick");
+
 
   /*
   New Ludum Dare Components
@@ -60,10 +64,23 @@ void buildRegistry(){
   theEngine->registry.Register(new Property(LD33_UFOBEAMEFFECTCOMPONENT), "ufobeameffect");
   theEngine->registry.Register(new Property(LD33_UFOENGINEEFFECTCOMPONENT), "ufoengineeffect");
   theEngine->registry.Register(new Property(LD33_ABDUCTIBLECOMPONENT), "abductible");
+  
+  theEngine->registry.Register(new Property(LD33_BRAINWASHABLECOMPONENT), "brainwashable");
+  theEngine->registry.Register(new Property(LD33_BRAINWASHEDCOMPONENT), "brainwashed");
+  theEngine->registry.Register(new Property(LD33_RELEASABLECOMPONENT), "releasable");
+  theEngine->registry.Register(new Property(LD33_EMPLOYABLECOMPONENT), "employable");
+  theEngine->registry.Register(new Property(LD33_EMPLOYEDCOMPONENT), "employed");
+  theEngine->registry.Register(new Property(LD33_WINPROGRESS), "winprogress");
+  theEngine->registry.Register(new Property(LD33_ISENGINEER), "isengineer");
+  theEngine->registry.Register(new Property(LD33_ISDJ), "isdj");
  
+
 }
 
 int main(){  
+  if(!final){
+    windowheight = 860;
+  }
   std::cout<<"Loaded SkilLib v" << libVersion << "\n";
   theEngine = new Engine();
   theEngine->addSystem(new WindowSystem(windowwidth, windowheight, title));
@@ -77,7 +94,7 @@ int main(){
   theEngine->addSystem(new DepthSystem());
   theEngine->addSystem(new ScrollSystem(2048, 2048));
   theEngine->addSystem(new BarGraphSystem());
-
+  theEngine->addSystem(new StringMessageOnClickSystem());
 
   /*
   LD33 Specific Systems
@@ -86,6 +103,7 @@ int main(){
   theEngine->addSystem(new UFOControlSystem());
   theEngine->addSystem(new UFOParticleSystem());
   theEngine->addSystem(new AbductionSystem());
+  theEngine->addSystem(new WinLossSystem());
 
   std::cout<<"\nSystems added\n";
 

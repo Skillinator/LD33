@@ -25,6 +25,7 @@ const int COMPONENT_TIMEDMESSAGE = 12;
 const int COMPONENT_PROPERTY = 13;
 const int COMPONENT_SCROLL = 14;
 const int COMPONENT_BARGRAPH = 15;
+const int COMPONENT_STRINGMESSAGEONCLICK = 16;
 
 class NullComponent : public Component{
 public:
@@ -200,6 +201,16 @@ public:
 	float y;
 	float dir;
 	float ratio;
+
+};
+
+
+class StringMessageOnClick : public Component{
+public:
+	Component* spawn(std::string, std::string);
+	StringMessageOnClick();
+	StringMessageOnClick(std::string msg);
+	std::string message;
 
 };
 

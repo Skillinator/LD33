@@ -15,6 +15,7 @@ const int MESSAGE_CHANGESCENE = 3;
 const int MESSAGE_SCROLL = 4;
 const int MESSAGE_BARGRAPH_CHANGE = 5;
 const int MESSAGE_BARGRAPH_SET = 6;
+const int MESSAGE_STRING = 7;
 
 class DeltaMessage : public Message{
 public:
@@ -57,13 +58,20 @@ public:
 	void handle(Message*, System*);
 };
 
+
+class AbductionSystemHandler : public MessageHandler{
+public:
+	AbductionSystemHandler();
+	void handle(Message*, Entity*);
+	void handle(Message*, System*);
+};
+
 class BarGraphSystemHandler : public MessageHandler{
 public:
 	BarGraphSystemHandler();
 	void handle(Message*, Entity*);
 	void handle(Message*, System*);
 };
-
 class ChangeBarGraphMessage : public Message{
 public:
 	ChangeBarGraphMessage();
@@ -86,6 +94,13 @@ public:
 	ScrollMessage(float cx, float cy);
 	float changex;
 	float changey;
+};
+
+class StringMessage : public Message{
+public:
+	StringMessage();
+	StringMessage(std::string str);
+	std::string message;
 };
 
 #endif

@@ -21,8 +21,9 @@ entity
 	component: color 1.0 0.0 0.0 1.0
 	component: dimensions 16 16
 	component: position 300 300
-	component: vector velocity 0 0
 	component: abductible
+	component: releasable
+	component: employable
 
 entity
 	component: color 1.0 0.0 0.0 1.0
@@ -90,6 +91,20 @@ entity
 	component: position 25 680 2
 
 
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 0 768 -2
+	component: scroll
+
+entity
+	component: texture truck
+	component: dimensions 128 128
+	component: position 0 768
+	component: scroll
+	component: abductible
+	component: winprogress
+	
 entity
 	component: texture roadStraightHorizontal
 	component: dimensions 128 128
@@ -493,4 +508,172 @@ entity
 	component: texture cornfield
 	component: dimensions 128 192
 	component: position 128 0 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 384 512 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 512 512 -2
+	component: scroll
+
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 640 512 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 768 512 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 896 512 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 384 384 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 512 384 -2
+	component: scroll
+
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 640 384 -2
+	component: scroll
+
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 768 384 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 896 384 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 384 256 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 512 256 -2
+	component: scroll
+
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 640 256 -2
+	component: scroll
+
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 768 256 -2
+	component: scroll
+
+entity
+	component: texture grass
+	component: dimensions 128 128
+	component: position 896 256 -2
+	component: scroll
+
+
+entity
+	component: texture firestation
+	component: dimensions 256 128
+	component: position 448 768 -2
+	component: scroll
+
+entity
+	component: texture hose
+	component: dimensions 128 128
+	component: position 448 700 -2
+	component: scroll
+	component: abductible
+	component: winprogress
+
+entity
+	component: texture house1
+	component: dimensions 128 128
+	component: position 896 768 -2
+	component: scroll
+
+entity
+	component: texture radiostation
+	component: dimensions 128 128
+	component: position 768 768 -2
+	component: scroll
+
+entity
+	component: texture dj
+	component: dimensions 128 128
+	component: position 768 704 -2
+	component: abductible
+	component: brainwashable
+	component: isdj
+	component: releasable
+	component: scroll
+
+entity
+	component: texture powerplant
+	component: dimensions 256 128
+	component: position 1216 768 -2
+	component: scroll
+
+entity
+	component: texture engineer
+	component: dimensions 128 128
+	component: position 1216 704 -2
+	component: brainwashable
+	component: releasable
+	component: isengineer
+	component: abductible
+	component: scroll
+
+entity
+	component: texture garage
+	component: dimensions 128 128
+	component: position 1152 512 -2
+	component: scroll
+
+entity
+	component: texture mechanic
+	component: dimensions 128 128
+	component: position 1152 448 -2
+	component: employable
+	component: abductible
+	component: scroll
+
+entity
+	component: texture house2
+	component: dimensions 128 128
+	component: position 1280 512 -2
 	component: scroll

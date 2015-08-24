@@ -54,3 +54,7 @@ component
 component
 	name: bargraph
 	signature: sfffff
+
+component
+	name: stringmessageonclick
+	signature: s

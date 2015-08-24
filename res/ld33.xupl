@@ -24,6 +24,40 @@ component
 	name: ufoengineeffect
 	signature: void
 
+
+component
+	name: brainwashable
+	signature: void
+
+component
+	name: brainwashed
+	signature: void
+
+component
+	name: releasable
+	signature: void
+
+component
+	name: employable
+	signature: void
+
+component
+	name: employed
+	signature: void
+
+component
+	name: winprogress
+	signature: void
+
+component
+	name: isengineer
+	signature: void
+
+component
+	name: isdj
+	signature: void
+
+
 texture
 	name: ufo
 	path: res/ufo.png
@@ -107,4 +141,95 @@ textureMapped
 	tex: roadSpriteSheet
 	xmaps: 0.1, 0.2, 0.2, 0.1
 	ymaps: 0.5, 0.5, 0.65, 0.65
+
+textureMapped
+	name: house1
+	tex: roadSpriteSheet
+	xmaps: 0.1, 0.2, 0.2, 0.1
+	ymaps: 0.3, 0.3, 0.4, 0.4
+
+textureMapped
+	name: house2
+	tex: roadSpriteSheet
+	xmaps: 0.2, 0.3, 0.3, 0.2
+	ymaps: 0.3, 0.3, 0.4, 0.4
+
+textureMapped
+	name: house3
+	tex: roadSpriteSheet
+	xmaps: 0.3, 0.4, 0.4, 0.3
+	ymaps: 0.3, 0.3, 0.4, 0.4
+
+textureMapped
+	name: grass
+	tex: roadSpriteSheet
+	xmaps: 0.4, 0.5, 0.5, 0.4
+	ymaps: 0.3, 0.3, 0.4, 0.4
+
+textureMapped
+	name: fuel
+	tex: roadSpriteSheet
+	xmaps: 0.1, 0.2, 0.2, 0.1
+	ymaps: 0.1, 0.1, 0.2, 0.2
+
+textureMapped
+	name: truck
+	tex: roadSpriteSheet
+	xmaps: 0.0, 0.1, 0.1, 0.0
+	ymaps: 0.1, 0.1, 0.2, 0.2
+
+textureMapped
+	name: book
+	tex: roadSpriteSheet
+	xmaps: 0.2, 0.3, 0.3, 0.2
+	ymaps: 0.1, 0.1, 0.2, 0.2
+
+textureMapped
+	name: firestation
+	tex: roadSpriteSheet
+	xmaps: 0.5, 0.7, 0.7, 0.5
+	ymaps: 0.1, 0.1, 0.2, 0.2
+
+textureMapped
+	name: powerplant
+	tex: roadSpriteSheet
+	xmaps: 0.7, 0.9, 0.9, 0.7
+	ymaps: 0.2, 0.2, 0.3, 0.3
+
+textureMapped
+	name: radiostation
+	tex: roadSpriteSheet
+	xmaps: 0.6, 0.7, 0.7, 0.6
+	ymaps: 0.4, 0.4, 0.5, 0.5
+
+textureMapped
+	name: cow
+	tex: roadSpriteSheet
+	xmaps: 0.8, 0.9, 0.9, 0.8
+	ymaps: 0.4, 0.4, 0.5, 0.5
+
+textureMapped
+	name: garage
+	tex: roadSpriteSheet
+	xmaps: 0.7, 0.8, 0.8, 0.7
+	ymaps: 0.5, 0.5, 0.6, 0.6
+
+textureMapped
+	name: mechanic
+	tex: roadSpriteSheet
+	xmaps: 0.7, 0.8, 0.8, 0.7
+	ymaps: 0.7, 0.7, 0.8, 0.8
+
+textureMapped
+	name: dj
+	tex: roadSpriteSheet
+	xmaps: 0.8, 0.9, 0.9, 0.8
+	ymaps: 0.6, 0.6, 0.7, 0.7
+
+textureMapped
+	name: engineer
+	tex: roadSpriteSheet
+	xmaps: 0.8, 0.9, 0.9, 0.8
+	ymaps: 0.8, 0.8, 0.9, 0.9
+
 

@@ -21,6 +21,7 @@ extern int windowheight;
 
 AbductionSystem::AbductionSystem(){
 	id = LD33_ABDUCTIONSYSTEM;
+	handler = new AbductionSystemHandler();
 	ufox = ufoy = progress = 0;
 	beam = false;
 	currentAbductee = new Entity();
@@ -28,6 +29,28 @@ AbductionSystem::AbductionSystem(){
 }
 
 float abductSpeed = 10;
+
+Entity* buttonFactory(float x, float y, float r, float g, float b, std::string text, std::string message, int place){
+	Entity *tmp = new Entity();
+	tmp->addComponent(new Position(x, y, 5));
+	tmp->addComponent(new Color(r,g,b,1));
+	tmp->addComponent(new TextMessage(text, "fixedWhite", 12, -30));
+	tmp->addComponent(new Dimensions(60, 24));
+	tmp->addComponent(new StringMessageOnClick(message));
+
+	int property;
+
+	switch(place){
+		case 1: property = LD33_PLACEONE; break;
+		case 2: property = LD33_PLACETWO; break;
+		case 3: property = LD33_PLACETHREE; break;
+		case 4: property = LD33_PLACEFOUR; break;
+		case 5: property = LD33_PLACEFIVE; break;
+	}
+	tmp->addComponent(new Property(property));
+
+	return tmp;
+}
 
 void AbductionSystem::update(float delta){
 	if(!beam){
@@ -48,14 +71,24 @@ void AbductionSystem::update(float delta){
 		int place;
 		if(!slot1){
 			place = 1;
+			slot1 = true;
+			currentAbductee->addComponent(new Property(LD33_PLACEONE));
 		}else if(!slot2){
+			slot2 = true;
 			place = 2;
+			currentAbductee->addComponent(new Property(LD33_PLACETWO));
 		}else if(!slot3){
+			slot3 = true;
 			place = 3;
+			currentAbductee->addComponent(new Property(LD33_PLACETHREE));
 		}else if(!slot4){
+			slot4 = true;
 			place = 4;
+			currentAbductee->addComponent(new Property(LD33_PLACEFOUR));
 		}else if(!slot5){
+			slot5 = true;
 			place = 5;
+			currentAbductee->addComponent(new Property(LD33_PLACEFIVE));
 		}else{
 			placeable = false;
 		}
@@ -63,11 +96,25 @@ void AbductionSystem::update(float delta){
 		static_cast<Vector*>(currentAbductee->getComponent(COMPONENT_VELOCITY))->setYComponent(0);
 		
 		if(placeable){
+			currentAbductee->removeComponent(COMPONENT_SCROLL);
 			Position* pos = static_cast<Position *>(currentAbductee->getComponent(COMPONENT_POSITION));
 			pos->setY(655);
 			pos->setX(320+150*(place-1));
 			pos->setZ(3);
+
+			if(currentAbductee->hasComponent(LD33_RELEASABLECOMPONENT))
+				theEngine->addEntity(buttonFactory(320+150*(place-1)-30, 625, 0.1, 0.6, 0.2, "Release", "Release"+std::to_string(place), place));
+
+			if(currentAbductee->hasComponent(LD33_BRAINWASHABLECOMPONENT))
+				theEngine->addEntity(buttonFactory(320+150*(place-1)+30, 625, 1.0, 0.0, 0.0, "Brainwash", "Brainwash"+std::to_string(place), place));
+			
+			if(currentAbductee->hasComponent(LD33_EMPLOYABLECOMPONENT))
+				theEngine->addEntity(buttonFactory(320+150*(place-1)+30, 625, 0.0, 0.0, 0.7, "Employ", "Employ"+std::to_string(place), place));
+
+			if(currentAbductee->hasComponent(LD33_WINPROGRESS))
+				messageSystems(new StringMessage("WINPROGRESS"));
 			currentAbductee = new Entity();
+
 		}
 		progress = 0;
 		return;

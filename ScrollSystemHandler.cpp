@@ -14,7 +14,8 @@
 #include <math.h>
 
 extern Engine *theEngine;
-
+float scrollx;
+float scrolly;
 ScrollSystemHandler::ScrollSystemHandler(){
 	// Nothing doing
 }
@@ -32,6 +33,8 @@ void ScrollSystemHandler::handle(Message *m, System *sys){
 		
 		float cx = sm->changex;
 		float cy = sm->changey;
+		scrollx -=cx;
+		scrolly -=cy;
 
 		for(int i = 0; i < theEngine->numEntities(); i++){
 			Entity* ent = theEngine->getEntity(i);
