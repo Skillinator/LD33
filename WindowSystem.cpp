@@ -10,7 +10,7 @@
 #include "skilLib.h"
 #include "systems.h"
 #include <GL/gl.h>
-#include <GL/glx.h>
+//#include <GL/glx.h>
 
 WindowSystem::WindowSystem(){
 	std::string str = "SkilLib test";
